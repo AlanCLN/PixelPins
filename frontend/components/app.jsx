@@ -10,7 +10,7 @@ const App = () => (
   <div>
     <ModalContainer />
     <header>
-      <h1>PixelPins123</h1>
+      <h1>PixelPins</h1>
       {/* <Route path="/" component={GreetingContainer}/> */}
     </header>
     {/* <AuthRoute exact path="/login" component={LoginFormContainer} />

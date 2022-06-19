@@ -2,7 +2,6 @@ import React from 'react';
 
 class SessionForm extends React.Component {
     constructor(props) {
-        debugger
         super(props);
         this.state = {
             username: '',
@@ -28,18 +27,19 @@ class SessionForm extends React.Component {
         : text = 'Sign Up'
 
         return (
-            <header>
-                <h3>{text}</h3>
+            <div className="session-form-container">
+                <h1>Welcome to PixelPins</h1>
                 <p>{this.props.errors}</p>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username:
-                        <input
-                            type="text"
-                            value={this.state.username}
-                            onChange={this.update('username')}
-                            />
+                <form onSubmit={this.handleSubmit} className="form-box">
+                    <label htmlFor="username">Username
+                    <input
+                        id="username"
+                        type="text"
+                        value={this.state.username}
+                        onChange={this.update('username')}
+                    />
                     </label>
-                    <label>Password:
+                    <label>Password
                         <input
                             type="password"
                             value={this.state.password}
@@ -49,7 +49,7 @@ class SessionForm extends React.Component {
                     <button>{text}</button>
                     {this.props.otherForm}
                 </form>
-            </header>
+            </div>
         )
     }
 }
