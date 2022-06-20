@@ -28,8 +28,15 @@ class SessionForm extends React.Component {
 
         return (
             <div className="session-form-container">
+                <span className="modal-close" onClick={this.props.closeModal}>&times;</span>
                 <h1>Welcome to PixelPins</h1>
-                <p>{this.props.errors}</p>
+                <div className="error-message-container">
+                    {
+                        this.props.errors.map((error, idx) => (
+                            <p className="error-message" key={idx}>{error}</p>
+                        ))
+                    }
+                </div>
                 <form className="form-box">
                     <label htmlFor="username">
                         <div>Username</div>
@@ -61,6 +68,11 @@ class SessionForm extends React.Component {
                 <button className="demo-user-button">
                     Continue as Demo User
                 </button>
+                <div className="filler-text-container">
+                    <p>This clone is for educational purposes only.</p>
+                    <p>Please do not put any sensitive information.</p>
+                </div>
+                <div className="line-divide"></div>
                 {this.props.otherForm}
             </div>
         )
