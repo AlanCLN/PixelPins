@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.openModal = openModal;
   window.closeModal = closeModal;
 
+  store.dispatch(openModal('login'))
+
 
 
 

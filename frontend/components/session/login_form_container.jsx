@@ -16,8 +16,10 @@ const mDTP = (dispatch) => {
         processForm: (formUser) => dispatch(login(formUser)),
         closeModal: () => dispatch(closeModal()),
         otherForm: (
-            <button onClick={() => dispatch(openModal('signup'))}>
-                Signup
+            <button
+                className="other-form-button"
+                onClick={() => dispatch(openModal('signup'))}>
+                    Not on PixelPin yet? Sign up
             </button>
         )
 

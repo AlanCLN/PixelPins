@@ -23,32 +23,45 @@ class SessionForm extends React.Component {
     render() {
 
         let text = this.props.formType === 'login'
-        ? text = 'Login'
-        : text = 'Sign Up'
+        ? text = 'Log in'
+        : text = 'Continue'
 
         return (
             <div className="session-form-container">
                 <h1>Welcome to PixelPins</h1>
                 <p>{this.props.errors}</p>
-                <form onSubmit={this.handleSubmit} className="form-box">
-                    <label htmlFor="username">Username
+                <form className="form-box">
+                    <label htmlFor="username">
+                        <div>Username</div>
+                    </label>
                     <input
                         id="username"
                         type="text"
                         value={this.state.username}
+                        placeholder="Username"
                         onChange={this.update('username')}
                     />
+                    <label htmlFor="password">
+                        <div>Password</div>
                     </label>
-                    <label>Password
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                            />
-                    </label>
-                    <button>{text}</button>
-                    {this.props.otherForm}
+                    <input
+                        id="password"
+                        type="password"
+                        value={this.state.password}
+                        placeholder="Password"
+                        onChange={this.update('password')}
+                    />
                 </form>
+                <button 
+                    className="form-submit-button"
+                    onClick={this.handleSubmit}>
+                        {text}
+                </button>
+                <span>OR</span>
+                <button className="demo-user-button">
+                    Continue as Demo User
+                </button>
+                {this.props.otherForm}
             </div>
         )
     }
