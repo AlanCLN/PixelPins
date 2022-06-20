@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import SessionForm from "./session_form";
-import { createNewUser } from "../../actions/session_actions";
+import { createNewUser, login } from "../../actions/session_actions";
 import { openModal, closeModal } from '../../actions/modal_actions'; 
 
 const mSTP = (state, ownProps) => {
@@ -14,6 +14,7 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => {
     return {
         processForm: (formUser) => dispatch(createNewUser(formUser)),
+        login: (demoUser) => dispatch(login(demoUser)),
         closeModal: () => dispatch(closeModal()),
         otherForm: (
             <button 

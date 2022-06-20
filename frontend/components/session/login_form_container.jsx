@@ -14,6 +14,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         processForm: (formUser) => dispatch(login(formUser)),
+        login: (demoUser) => dispatch(login(demoUser)),
         closeModal: () => dispatch(closeModal()),
         otherForm: (
             <button

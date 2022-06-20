@@ -1,4 +1,5 @@
 import React from 'react';
+import sleep from '../../util/sleep';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -9,17 +10,25 @@ class SessionForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.handleDemoUser = this.handleDemoUser.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state)
+        this.props.processForm(this.state).then(this.props.closeModal());
         // .then(() => this.props.history.push('./'));
     }
 
     closeModal(e) {
         e.preventDefault();
         this.props.closeModal();
+    }
+
+    async handleDemoUser(e) {
+        e.preventDefault();
+        this.setState({username: 'demoUser', password: 'demouser'})
+        await sleep(1200)
+        this.props.login(this.state).then(this.props.closeModal());
     }
 
     update(field) {
@@ -71,7 +80,9 @@ class SessionForm extends React.Component {
                         {text}
                 </button>
                 <span>OR</span>
-                <button className="demo-user-button">
+                <button
+                    className="demo-user-button"
+                    onClick={this.handleDemoUser}>
                     Continue as Demo User
                 </button>
                 <div className="filler-text-container">
