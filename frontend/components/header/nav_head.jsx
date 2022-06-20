@@ -66,14 +66,23 @@ const NavHead = (props) => {
                 </div>
                 <div className="unauth-nav-links">
                     <div className="bio-links">
-                        <div className="link-container">
-                            <a href="https://github.com/alancln">Github</a>
+                        <div className="portfolio link-container icon-container">
+                            <a href="#">
+                                <img src={window.portfolioIcon} />
+                            </a>
                         </div>
-                        <div className="link-container">
-                            <a href="#">LinkedIn</a>
+                        <div className="github link-container icon-container">
+                            <a href="https://github.com/alancln">
+                                <img src={window.githubIcon} />
+                            </a>
                         </div>
-                        <div className="link-container">
-                            <a href="#">Portfolio</a>
+                        <div className="linkedin link-container icon-container">
+                            <a href="#">
+                                <img src={window.linkedinIcon} />
+                            </a>
+                        </div>
+                        <div className="">
+
                         </div>
                     </div>
                 </div>
