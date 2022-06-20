@@ -1,0 +1,87 @@
+@import '../variables.scss';
+
+.nav-header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.home-logo {
+    display: flex;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px 12px;
+
+    .home-logo-link {
+        color: #CC0000;
+    }
+}
+
+
+.unauth-nav-links {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.bio-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 24px;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+
+    :hover {
+        text-decoration: underline;
+    }
+}
+
+.link-container {
+    display: flex;
+    box-sizing: border-box;
+    margin: 16px;
+}
+
+.session-modal {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    min-width: 60px;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 24px;
+    font-size: 16px;
+    padding: 8px 12px;
+    cursor: pointer;
+
+}
+
+.header-login {
+    background-color: $red-button;
+    color: white;
+    margin-right: 8px;
+}
+
+.header-login:hover {
+    background-color: $red-button-hover;
+}
+
+.header-signup {
+    background-color: $gray-button;
+}
+
+.header-signup:hover {
+    background-color: $gray-button-hover;
+}
+

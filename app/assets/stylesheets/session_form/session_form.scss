@@ -107,6 +107,10 @@ button.form-submit-button {
     cursor: pointer;
 }
 
+button.form-submit-button:hover {
+    background-color: $red-button-hover;
+}
+
 button.demo-user-button {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -117,7 +121,7 @@ button.demo-user-button {
     height: 40px;
     display: inline-block;
     color: white;
-    background-color: #0979fa;
+    background-color: $blue-button;
     border-radius: 20px;
     cursor: pointer;
 }

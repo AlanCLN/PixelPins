@@ -8,12 +8,18 @@ class SessionForm extends React.Component {
             password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
         this.props.processForm(this.state)
         // .then(() => this.props.history.push('./'));
+    }
+
+    closeModal(e) {
+        e.preventDefault();
+        this.props.closeModal();
     }
 
     update(field) {
@@ -28,7 +34,7 @@ class SessionForm extends React.Component {
 
         return (
             <div className="session-form-container">
-                <span className="modal-close" onClick={this.props.closeModal}>&times;</span>
+                <span className="modal-close" onClick={this.closeModal}>&times;</span>
                 <h1>Welcome to PixelPins</h1>
                 <div className="error-message-container">
                     {
