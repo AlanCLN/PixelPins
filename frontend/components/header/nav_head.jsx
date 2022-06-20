@@ -16,6 +16,11 @@ const NavHead = (props) => {
         return (
             <div className="nav-header">
                 <div className="home-logo">
+                    <Link to="/">
+                        <div className="pinterest-logo">
+                            <img src={window.pinterestIcon} />
+                        </div>
+                    </Link>
                     <Link className="home-logo-link" to="/">PixelPins</Link>
                 </div>
                 <div className="unauth-nav-links">
@@ -45,6 +50,11 @@ const NavHead = (props) => {
         return (
             <div className="auth-head nav-header">
                 <div className="home-logo">
+                    <Link to="/">
+                        <div className="pinterest-logo">
+                            <img src={window.pinterestIcon} />
+                        </div>
+                    </Link>
                     <Link className="home-logo-link" to="/">PixelPins</Link>
                 </div>
                 <div className="search-bar-container">   
