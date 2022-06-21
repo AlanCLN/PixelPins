@@ -15,8 +15,8 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state)
-        // .then(() => this.props.history.push('./'));
+        this.props.processForm(this.state);
+        if (!this.props.errors) this.props.closeModal();
     }
 
     closeModal(e) {
