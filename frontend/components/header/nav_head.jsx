@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfileIcon from '../user/profile_icon';
 
 const NavHead = (props) => {
     
@@ -82,11 +83,15 @@ const NavHead = (props) => {
                         </a>
                     </div>
                     <div className="nav-link-divider"></div>
-                    <div className="user-show-container">
+                    <ProfileIcon
+                        currentUser={currentUser}
+                        image={false}
+                    />
+                    {/* <div className="avatar-container">
                         <Link to={`/users/${currentUser.id}`}>{
                             currentUser.username[0].toUpperCase()
                         }</Link>
-                    </div>
+                    </div> */}
                     <div className="logout-container">
                         <img src={window.logoutButton} onClick={props.logout}/>
                     </div>

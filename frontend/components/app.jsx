@@ -5,7 +5,7 @@ import SignupFormContainer from './session/signup_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
 import ModalContainer from './modal/modal_container';
 import NavHeadContainer from './header/nav_head_container';
-import UserShowContainer from './user_show/user_show_container';
+import UserShowContainer from './user/user_show_container';
 
 const App = () => (
   <div>

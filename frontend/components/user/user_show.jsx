@@ -1,4 +1,5 @@
 import React from 'react';
+import Avatar from './avatar';
 
 class UserShow extends React.Component {
     constructor(props) {
@@ -26,9 +27,12 @@ class UserShow extends React.Component {
         return ( 
             <div className="user-show-page">
                 <div className="user-show-info">
-                    <div className="profile-pic-container">
+                    <Avatar
+                        user={user}
+                    />
+                    {/* <div className="profile-pic-container">
                         <div>Profile Pic Placeholder</div>
-                    </div>
+                    </div> */}
                     <div className="username">
                         <h1 className="username-header">{user.username}</h1>
                         <span className="username-handle">{`@${user.username}`}</span>

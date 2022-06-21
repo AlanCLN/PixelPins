@@ -5,6 +5,19 @@
     color: #211922;
 }
 
+.default-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $gray-button;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .user-show-info {
     display: flex;
     flex-direction: column;
