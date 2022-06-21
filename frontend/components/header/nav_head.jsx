@@ -46,6 +46,7 @@ const NavHead = (props) => {
         )
     }
 
+
     const AuthHead = () => {
         return (
             <div className="auth-head nav-header">
@@ -64,26 +65,30 @@ const NavHead = (props) => {
                         placeholder="Coming soon..."
                     />
                 </div>
-                <div className="unauth-nav-links">
-                    <div className="bio-links">
-                        <div className="portfolio link-container icon-container">
-                            <a href="#">
-                                <img src={window.portfolioIcon} />
-                            </a>
-                        </div>
-                        <div className="github link-container icon-container">
-                            <a href="https://github.com/alancln">
-                                <img src={window.githubIcon} />
-                            </a>
-                        </div>
-                        <div className="linkedin link-container icon-container">
-                            <a href="#">
-                                <img src={window.linkedinIcon} />
-                            </a>
-                        </div>
-                        <div className="">
-
-                        </div>
+                <div className="auth-nav-links">
+                    <div className="portfolio link-container icon-container">
+                        <a href="#">
+                            <img src={window.portfolioIcon} />
+                        </a>
+                    </div>
+                    <div className="github link-container icon-container">
+                        <a href="https://github.com/alancln">
+                            <img src={window.githubIcon} />
+                        </a>
+                    </div>
+                    <div className="linkedin link-container icon-container">
+                        <a href="#">
+                            <img src={window.linkedinIcon} />
+                        </a>
+                    </div>
+                    <div className="nav-link-divider"></div>
+                    <div className="user-show-container">
+                        <Link to={`/users/${currentUser.id}`}>{
+                            currentUser.username[0].toUpperCase()
+                        }</Link>
+                    </div>
+                    <div className="logout-container">
+                        <img src={window.logoutButton} onClick={props.logout}/>
                     </div>
                 </div>
             </div>
