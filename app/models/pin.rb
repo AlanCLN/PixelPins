@@ -14,7 +14,24 @@ class Pin < ApplicationRecord
 
     belongs_to :uploader,
     class_name: 'User',
-    primary_key: :id,
     foreign_key: :uploader_id
+
+    has_many :pinboard_relationships,
+    class_name: 'PinBoard',
+    foreign_key: :pin_id,
+    dependent: :destroy
+
+    has_many :boards,
+    through: :pinboard_relationships,
+    source: :board
+
+    has_many :savedpin_relationships,
+    class_name: 'SavedPin',
+    foreign_key: :pin_id,
+    dependent: :destroy
+
+    has_many :saved_by_users,
+    through: :savedpin_relationships,
+    source: :user
 
 end

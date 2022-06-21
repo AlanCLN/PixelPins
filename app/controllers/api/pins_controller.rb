@@ -18,7 +18,6 @@ class Api::PinsController < ApplicationController
             return render json: ["You naughty naughty"], status: 401
         end
         
-
         if @pin.save
             render :show
         else

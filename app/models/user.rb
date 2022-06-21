@@ -18,17 +18,19 @@ class User < ApplicationRecord
 
     has_many :pins,
     class_name: 'Pin',
-    primary_key: :id,
     foreign_key: :uploader_id
 
+    has_many :boards,
+    class_name: 'Board',
+    foreign_key: :user_id
 
+    has_many :savedpin_relationships,
+    class_name: 'SavedPin',
+    foreign_key: :user_id
 
-
-
-
-
-
-
+    has_many :saved_pins,
+    through: :savedpin_relationships,
+    source: :pin
 
 
     attr_reader :password
