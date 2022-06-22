@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const PinCreateForm = (props) => {
 
+    const [state, setState] = useState({
+        title: '',
+        description: ''
+    })
+
     return (
-        <div>Pin Create Form</div>
+        <div className="pin-form-content">
+            <div>Pin Form</div>
+        </div>
     )
 }
 

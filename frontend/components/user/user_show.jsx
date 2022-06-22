@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Avatar from './avatar';
 
 // class UserShow extends React.Component {
@@ -87,6 +88,9 @@ const UserShow = (props) => {
                 </div>
                 <div className="follow-button-container">
                     {followButton()}
+                </div>
+                <div className="create-button-container">
+                    <Link to="/pin-builder" className="create-button">+</Link>
                 </div>
             </div>
         </div>
