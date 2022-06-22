@@ -12,12 +12,13 @@ class Api::PinsController < ApplicationController
 
     def create
         @pin = Pin.new(pin_params)
+        byebug
         if current_user
             @pin.uploader_id = current_user.id
         else
             return render json: ["You naughty naughty"], status: 401
         end
-        
+        byebug
         if @pin.save
             render :show
         else
@@ -46,7 +47,7 @@ class Api::PinsController < ApplicationController
 
     private
     def pin_params
-        params.require(:pin).permit(:title, :description)
+        params.require(:pin).permit(:title, :description, :image)
     end
     
 end
