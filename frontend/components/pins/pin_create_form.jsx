@@ -12,7 +12,7 @@ const PinCreateForm = (props) => {
     })
 
     const update = (field) => {
-        return e => setState({...state}, { [field]: e.currentTarget.value } )
+        return e => setState({ ...state, [field]: e.target.value })
     }
 
     const handlePinFile = (e) => {
@@ -44,8 +44,11 @@ const PinCreateForm = (props) => {
         if (state.imageFile) {
             formData.append('pin[image]', state.imageFile);
         }
-        props.createPin(formData);
+        props.createPin(formData).then(() => {
+            props.history.goBack();
+        })
     }
+
 
     const preview = state.imageUrl ? <img src={state.imageUrl} /> : null;
 
@@ -56,18 +59,26 @@ const PinCreateForm = (props) => {
                     <div className="upload-container">
                         <div className="upload-box">
                             {preview}
-                        </div>
-                        <div className="upload-file-input">
-                            <input
-                                className="pin-image-button"
-                                type="file"
-                                onChange={handlePinFile}
-                            />
+                            <div className="upload-file-input">
+                                <div className="upload-direction">
+                                    <p>Drag and drop or click to</p>
+                                    <p>upload</p>
+                                </div>
+                                <div className="upload-rec">
+                                    <p>Reccomendation: Use high-quality .jpg files</p>
+                                    <p>less than 20MB</p>
+                                </div>
+                                <input
+                                    className="pin-image-button"
+                                    type="file"
+                                    onChange={handlePinFile}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="info-container">
                         <div className="pin-title-container">
-                            <input
+                            <textarea
                                 className="pin-title-field"
                                 type="text"
                                 value={state.title}
@@ -76,13 +87,20 @@ const PinCreateForm = (props) => {
                             />
                         </div>
                         <div className="pin-description-container">
-                            <input 
+                            <textarea
                                 className="pin-description-field"
                                 type="text"
                                 value={state.description}
                                 placeholder="Tell everyone what your Pin is about"
                                 onChange={update('description')}
                             />
+                        </div>
+                        <div className="pin-errors-container">
+                            {
+                                props.errors.map((error, idx) => (
+                                    <p className="error-message" key={idx}>{error}</p>
+                                ))
+                            }
                         </div>
                         <div className="save-pin-button-container">
                             <button
