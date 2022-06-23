@@ -61,16 +61,18 @@ const PinCreateForm = (props) => {
                         <div className={`upload-box ${hiddenClassName}`}>
                             {preview}
                             <div className={`upload-file-input ${hiddenClassName}`}>
-                                <div className="upload-direction">
-                                    <p>Drag and drop or click to</p>
-                                    <p>upload</p>
-                                </div>
-                                    {!state.imageUrl && 
+                                {!state.imageUrl &&
+                                    <>
+                                        <div className="upload-direction">
+                                            <p>Drag and drop or click to</p>
+                                            <p>upload</p>
+                                        </div>
                                         <div className="upload-rec">
                                             <p>Reccomendation: Use high-quality .jpg files</p>
                                             <p>less than 20MB</p>
                                         </div>
-                                    }
+                                    </>
+                                }
                                 <input
                                     className="pin-image-button"
                                     type="file"
@@ -105,11 +107,11 @@ const PinCreateForm = (props) => {
                                 ))
                             }
                         </div>
-                        <div className="save-pin-button-container">
+                        <div className="create-pin-button-container">
                             <button
-                                className="save-pin-button"
+                                className="create-pin-button"
                                 onClick={handlePinSubmit}
-                                >Save
+                                >Create
                             </button>
                         </div>
                     </div>

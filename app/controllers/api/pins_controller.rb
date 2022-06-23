@@ -3,11 +3,11 @@ class Api::PinsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        @pins = Pin.all
+        @pins = Pin.with_attached_image.all
     end
 
     def show
-        @pin = Pin.find_by(id: params[:id])
+        @pin = Pin.with_attached_image.find_by(id: params[:id])
     end
 
     def create
@@ -25,7 +25,7 @@ class Api::PinsController < ApplicationController
     end
 
     def update
-        @pin = Pin.find_by(id: params[:id])
+        @pin = Pin.with_attached_image.find_by(id: params[:id])
         if @pin.update(pin_params)
             render :show
         else
