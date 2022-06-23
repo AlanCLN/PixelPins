@@ -61,11 +61,11 @@ const UserShow = (props) => {
         props.fetchUser(props.match.params.userId)
     }, [userParamsId]);
 
-    const followButton = () => {
-        return (props.user.id !== props.currentUser.id)
-        ? <button className="follow-button">Follow</button>
-        : null
-    }
+    // const followButton = () => {
+    //     return (props.user.id !== props.currentUser.id)
+    //     ? <button className="follow-button">Follow</button>
+    //     : null
+    // }
 
     const { user } = props
 
@@ -87,10 +87,10 @@ const UserShow = (props) => {
                     <span>1 followers</span>
                 </div>
                 <div className="follow-button-container">
-                    {followButton()}
+                    {/* {followButton()} */}
                 </div>
                 <div className="create-button-container">
-                    <Link to="/pin-builder" className="create-button">+</Link>
+                    <Link to="/builder" className="create-button">+</Link>
                 </div>
             </div>
         </div>

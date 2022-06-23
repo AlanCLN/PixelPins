@@ -13,7 +13,7 @@ const App = () => (
     <ModalContainer />
     <NavHeadContainer />
     <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-    <ProtectedRoute exact path="/pin-builder" component={PinCreateFormContainer}/>
+    <ProtectedRoute exact path="/builder" component={PinCreateFormContainer}/>
 
   </div>
 );

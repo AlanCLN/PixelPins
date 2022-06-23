@@ -49,25 +49,28 @@ const PinCreateForm = (props) => {
         })
     }
 
-
     const preview = state.imageUrl ? <img src={state.imageUrl} /> : null;
+    const hiddenClassName = state.imageUrl ? 'hidden' : null;
 
     return (
         <div className="pin-form-content">
             <div className="pin-form-container">
                 <div className="form-body">
-                    <div className="upload-container">
-                        <div className="upload-box">
+                    
+                    <div className={`upload-container ${hiddenClassName}`}>
+                        <div className={`upload-box ${hiddenClassName}`}>
                             {preview}
-                            <div className="upload-file-input">
+                            <div className={`upload-file-input ${hiddenClassName}`}>
                                 <div className="upload-direction">
                                     <p>Drag and drop or click to</p>
                                     <p>upload</p>
                                 </div>
-                                <div className="upload-rec">
-                                    <p>Reccomendation: Use high-quality .jpg files</p>
-                                    <p>less than 20MB</p>
-                                </div>
+                                    {!state.imageUrl && 
+                                        <div className="upload-rec">
+                                            <p>Reccomendation: Use high-quality .jpg files</p>
+                                            <p>less than 20MB</p>
+                                        </div>
+                                    }
                                 <input
                                     className="pin-image-button"
                                     type="file"

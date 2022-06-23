@@ -6,7 +6,7 @@ import UserShow from './user_show';
 const mSTP = (state, ownProps) => {
     return {
         user: state.entities.users[ownProps.match.params.userId],
-        currentUser: state.entities.users[state.session.id]
+        // currentUser: state.entities.users[state.session.id]
     }
 }
 
