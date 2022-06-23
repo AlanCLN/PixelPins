@@ -10,6 +10,7 @@
 #
 class SavedPin < ApplicationRecord
     validates :user_id, :pin_id, presence: true
+    validates :user_id, uniqueness: { scope: :pin_id}
 
     belongs_to :user,
     class_name: 'User',

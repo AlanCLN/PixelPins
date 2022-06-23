@@ -1,0 +1,31 @@
+@import '../variables.scss';
+
+.pin-container {
+    width: 230px;
+    position: relative;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+
+    .pin-show-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.pin-image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+.save-pin-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+

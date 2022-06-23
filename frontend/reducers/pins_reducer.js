@@ -6,14 +6,7 @@ const pinsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PINS:
-            action.pins.forEach(pin => {
-                nextState[pin.id] = {
-                    id: pin.id,
-                    title: pin.title,
-                    description: pin.description,
-                    uploaderId: pin.uploaderId
-                };
-            });
+            Object.assign(nextState, action.pins)
             return nextState;
         case RECEIVE_PIN:
             nextState[action.pin.id] = action.pin;
