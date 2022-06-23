@@ -9,7 +9,7 @@ const PinIndex = (props) => {
     const { pins, fetchPins } = props
 
     if (!pins) return null;
-
+    
     return (
         <div className="pin-index-page">
             {
