@@ -29,7 +29,7 @@ class Api::BoardsController < ApplicationController
     def update
         @board = Board.find_by(id: params[:id])
         if @board.update(board_params)
-            render: show
+            render :show
         else
             render json: @board.errors.full_messages, status: 401
         end
