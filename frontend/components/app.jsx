@@ -12,7 +12,6 @@ const App = () => (
     <NavHeadContainer />
     <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
     <ProtectedRoute exact path="/builder" component={PinCreateFormContainer}/>
-
   </div>
 );
 
