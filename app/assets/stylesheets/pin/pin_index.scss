@@ -1,6 +1,16 @@
 .pin-index-page {
-    padding: 10px 20px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    // padding: 10px 20px;
+    // margin-right: 30px;
+    // column-count: 7;
+    // column-fill: balance;
+    // column-gap: 10px;
+    margin-left: 30px;
+    column-width: 236px;
+    column-count: 7;
+}
+
+@media screen and (max-width: 1200px) {
+    .pin-index-page {
+        margin-left: 50px;
+    }
 }
