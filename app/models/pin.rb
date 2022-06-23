@@ -11,15 +11,15 @@
 #
 class Pin < ApplicationRecord
     validates :title, :uploader_id, presence: true;
-    validate :ensure_photo
+    # validate :ensure_photo
 
     has_one_attached :image
 
-    def ensure_photo
-        unless self.image.attached?
-            errors[:image] << "must be attached"
-        end
-    end
+    # def ensure_photo
+    #     unless self.image.attached?
+    #         errors[:image] << "must be attached"
+    #     end
+    # end
 
     belongs_to :uploader,
     class_name: 'User',

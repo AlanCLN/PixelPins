@@ -47,7 +47,7 @@ image6 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/dog6.jpg")
 pin6.image.attach(io: image6, filename: 'dog6.jpg')
 
 pin7 = Pin.create!({title: 'tired', description: 'leave me alone', uploader_id: user7.id})
-image8 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/dog7.jpg")
+image7 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/dog7.jpg")
 pin7.image.attach(io: image7, filename: 'dog7.jpg')
 
 pin8 = Pin.create!({title: 'ocean time', description: 'bath of the month', uploader_id: user8.id})
@@ -106,38 +106,38 @@ pin21 = Pin.create!({title: 'what a view', description: "can't wait to be back",
 image21 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey1.jpg")
 pin21.image.attach(io: image21, filename: 'journey1.jpg')
 
-pin22 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user2.id})
+pin22 = Pin.create!({title: 'picnic time', description: 'nice weather we have here', uploader_id: user2.id})
 image22 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey2.jpg")
 pin22.image.attach(io: image22, filename: 'journey2.jpg')
 
-pin23 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user3.id})
+pin23 = Pin.create!({title: 'hole in one', description: 'any golfers?', uploader_id: user3.id})
 image23 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey3.jpg")
 pin23.image.attach(io: image23, filename: 'journey3.jpg')
 
-pin24 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user4.id})
+pin24 = Pin.create!({title: 'relaxation day', description: 'love the beach', uploader_id: user4.id})
 image24 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey4.jpg")
 pin24.image.attach(io: image24, filename: 'journey4.jpg')
 
-pin25 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user5.id})
+pin25 = Pin.create!({title: 'by the water', description: 'this place is awesome', uploader_id: user5.id})
 image25 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey5.jpg")
 pin25.image.attach(io: image25, filename: 'journey5.jpg')
 
-pin26 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user6.id})
+pin26 = Pin.create!({title: 'taken with a drone', description: 'love this place', uploader_id: user6.id})
 image26 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey6.jpg")
 pin26.image.attach(io: image26, filename: 'journey6.jpg')
 
-pin27 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user7.id})
+pin27 = Pin.create!({title: 'kayaking', description: 'the waves are so calm', uploader_id: user7.id})
 image27 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey7.jpg")
 pin27.image.attach(io: image27, filename: 'journey7.jpg')
 
-pin28 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user8.id})
+pin28 = Pin.create!({title: 'first time in paris', description: 'doing tourist things', uploader_id: user8.id})
 image28 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey8.jpg")
 pin28.image.attach(io: image28, filename: 'journey8.jpg')
 
-pin29 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user9.id})
+pin29 = Pin.create!({title: 'just woke up', description: 'what a view', uploader_id: user9.id})
 image29 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey9.jpg")
 pin29.image.attach(io: image29, filename: 'journey9.jpg')
 
-pin30 = Pin.create!({title: 'painting class', description: 'what should i paint next?', uploader_id: user10.id})
+pin30 = Pin.create!({title: 'look at this place', description: "it's beautiful", uploader_id: user10.id})
 image30 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey10.jpg")
 pin30.image.attach(io: image30, filename: 'journey10.jpg')
