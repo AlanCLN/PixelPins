@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
         @current_user = User.find_by(session_token: session[:session_token])
     end
 
+    def require_logged_in
+        redirect_to "static_pages/root" unless logged_in?
+    end
+
     def logged_in?
         !!current_user
     end

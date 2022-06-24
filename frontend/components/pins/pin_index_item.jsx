@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SavePinButton from '../buttons/save_pin_button';
 
 const PinIndexItem = (props) => {
 
@@ -15,10 +16,7 @@ const PinIndexItem = (props) => {
             <Link to={`/pins/${pin.id}`} className="pin-show-link">
                 <img src={pin.imageUrl} className="pin-image"/>
                 <div className="hidden-pin-layer">
-                    <button
-                        className="save-pin-button"
-                        onClick={handleSavePin}
-                    >Save</button>
+                    <SavePinButton />
                 </div>
             </Link>
         </div>

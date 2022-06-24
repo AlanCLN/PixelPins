@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
 
     skip_before_action :verify_authenticity_token  #delete in production
+    before_action :require_logged_in
 
     def show
         @user = User.find_by(id: params[:id])
