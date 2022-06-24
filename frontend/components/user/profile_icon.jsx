@@ -9,7 +9,7 @@ const ProfileIcon = (props) => {
     const defaultPic = () => {
         return (
             <div className="avatar-container">
-                <Link to={`/users/${currentUser.id}`}>{
+                <Link to={`/users/${currentUser.id}/saved`}>{
                     currentUser.username[0].toUpperCase()
                 }</Link>
             </div>

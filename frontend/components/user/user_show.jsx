@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Avatar from './avatar';
 
 // class UserShow extends React.Component {
@@ -91,6 +91,20 @@ const UserShow = (props) => {
                 </div>
                 <div className="create-button-container">
                     <Link to="/builder" className="create-button">+</Link>
+                </div>
+            </div>
+            <div className="created-saved-container">
+                <div className="show-tab">
+                    <NavLink
+                        to={`/users/${user.id}/created`}
+                        activeClassName='created-tab active-show'
+                    >Created</NavLink>
+                </div>
+                <div className="show-tab">
+                    <NavLink
+                        to={`/users/${user.id}/saved`}
+                        activeClassName='saved-tab active-show'
+                    >Saved</NavLink>
                 </div>
             </div>
         </div>

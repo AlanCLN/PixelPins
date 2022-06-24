@@ -49,11 +49,20 @@ const PinCreateForm = (props) => {
         })
     }
 
+    const handleGoBack = (e) => {
+        e.preventDefault();
+        window.history.back();
+    }
+
     const preview = state.imageUrl ? <img src={state.imageUrl} /> : null;
     const hiddenClassName = state.imageUrl ? 'hidden' : null;
 
     return (
         <div className="pin-form-content">
+            <div
+                className="pin-form-content-layer"
+                onClick={handleGoBack}
+            ></div>
             <div className="pin-form-container">
                 <div className="form-body">
                     

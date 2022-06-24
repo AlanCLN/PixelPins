@@ -30,7 +30,6 @@ const SessionForm = (props) => {
         return e => setState({ ...state, [field]: e.target.value })
     }
 
-
     let text = props.formType === 'login'
     ? text = 'Log in'
     : text = 'Continue'
