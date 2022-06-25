@@ -2,6 +2,7 @@ import React from 'react';
 import PinIndexItem from '../pins/pin_index_item';
 
 const UserShowSaved = (props) => {
+    debugger
 
     return (
         <div className="saved-content">

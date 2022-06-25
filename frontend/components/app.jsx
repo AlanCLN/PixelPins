@@ -7,8 +7,6 @@ import UserShowContainer from './user/user_show_container';
 import PinCreateFormContainer from './pins/pin_create_form_container';
 import PinIndexContainer from './pins/pin_index_container';
 import PinShowContainer from "./pins/pin_show_container.jsx";
-import UserShowCreated from './user/user_show_created';
-import UserShowSaved from './user/user_show_saved';
 
 const App = () => (
   <div>
@@ -16,8 +14,8 @@ const App = () => (
     <NavHeadContainer />
     <div className="app-content">
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
-      <ProtectedRoute path="/users/:userId/created" component={UserShowCreated} />
-      <ProtectedRoute path="/users/:userId/saved" component={UserShowSaved} />
+      {/* <ProtectedRoute path="/users/:userId/created" component={UserShowCreatedContainer} /> */}
+      {/* <ProtectedRoute path="/users/:userId/saved" component={UserShowSavedContainer} /> */}
       <ProtectedRoute path="/pins/:pinId" component={PinShowContainer} />
       <ProtectedRoute exact path="/builder" component={PinCreateFormContainer} />
       <ProtectedRoute exact path="/" component={PinIndexContainer} />
