@@ -4,6 +4,7 @@ const SavePinButton = (props) => {
 
     const handleSavePin = (e) => {
         e.preventDefault();
+        console.log('save pin')
     }
 
     return (

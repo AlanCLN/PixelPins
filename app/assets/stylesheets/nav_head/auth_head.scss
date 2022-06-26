@@ -1,7 +1,7 @@
 @import '../variables.scss';
 
 .auth-head {
-    position: fixed;
+    position: fixed !important;
     z-index: 10;
     top: 0;
 }

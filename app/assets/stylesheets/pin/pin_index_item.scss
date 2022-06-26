@@ -1,13 +1,10 @@
 @import '../variables.scss';
 
 .pin-container {
-    min-width: 236px;
-    max-width: 236px;
+    width: 236px;
     position: relative;
-    margin-bottom: 30px;
-    // margin: 30px;
     box-sizing: border-box;
-    display: block;
+    margin: 15px;
 }
 
 .pin-show-link {
@@ -15,6 +12,7 @@
     z-index: 10;
     display: block;
     width: 100%;
+    height: auto;
     cursor: zoom-in;
 
     img.pin-image {
@@ -24,10 +22,6 @@
         box-sizing: border-box;
         border: 0.5px solid rgb(231, 231, 231);
     }
-}
-
-.pin-image:hover {
-    opacity: 0;
 }
 
 .hidden-pin-layer {
