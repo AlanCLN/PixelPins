@@ -63,6 +63,17 @@
     }
 }
 
+.session-form-logo {
+    height: 40px;
+    width: 40px;
+    margin-top: 20px;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
 .form-box {
     label {
         display: flex;

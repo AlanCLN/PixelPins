@@ -37,6 +37,9 @@ const SessionForm = (props) => {
     return (
         <div className="session-form-container">
             <span className="modal-close" onClick={closeModal}>&times;</span>
+            <div className="session-form-logo">
+                <img src={window.pinterestIcon} alt="" />
+            </div>
             <h1>Welcome to PixelPins</h1>
             <div className="error-message-container">
                 {

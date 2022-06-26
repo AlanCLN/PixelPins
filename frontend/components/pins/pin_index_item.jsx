@@ -14,7 +14,7 @@ const PinIndexItem = (props) => {
     return (
         <div className="pin-container">
             <Link to={`/pins/${pin.id}`} className="pin-show-link">
-                <img src={pin.imageUrl} className="pin-image"/>
+                <img src={pin.imageUrl} className="pin-image" loading="lazy"/>
                 <div className="hidden-pin-layer">
                     <SavePinButton />
                 </div>
