@@ -1,0 +1,24 @@
+.splash-page {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+}
+
+.splash-page-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        height: 60px;
+        box-sizing: border-box;
+        font-weight: 600px;
+        margin: 4px;
+    }
+}

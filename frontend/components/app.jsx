@@ -9,12 +9,14 @@ import PinIndexContainer from './pins/pin_index_container';
 import PinShowContainer from "./pins/pin_show_container.jsx";
 import UserShowCreatedContainer from './user/user_show_created_container';
 import UserShowSavedContainer from './user/user_show_saved_container';
+import SplashPage from "./splash/splash.jsx";
 
 const App = () => (
   <div>
     <ModalContainer />
     <NavHeadContainer />
     <div className="app-content">
+      <AuthRoute path="/" component={SplashPage}/>
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
       <Switch>
         <ProtectedRoute path="/users/:userId/created" component={UserShowCreatedContainer} />
