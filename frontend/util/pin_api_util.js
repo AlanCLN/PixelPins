@@ -36,3 +36,10 @@ export const deletePin = (pinId) => {
         url: `api/pins/${pinId}`
     })
 }
+
+export const fetchUserPins = (userId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/users/${userId}/pins`
+    })
+};

@@ -5,6 +5,10 @@ class Api::PinsController < ApplicationController
 
     def index
         @pins = Pin.with_attached_image.all
+
+        if params[:user_id]
+            @pins = Pin.where('uploader_id = ?', params[:user_id]).with_attached_image
+        end
     end
 
     def show

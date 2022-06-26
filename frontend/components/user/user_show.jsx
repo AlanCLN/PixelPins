@@ -69,7 +69,6 @@ const UserShow = (props) => {
 
     const { user } = props
 
-    debugger
     if (!user) return null;
     return ( 
         <div className="user-show-page">

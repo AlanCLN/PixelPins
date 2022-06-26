@@ -83,18 +83,21 @@ const NavHead = (props) => {
                         </a>
                     </div>
                     <div className="nav-link-divider"></div>
-                    <ProfileIcon
-                        currentUser={currentUser}
-                        image={false}
-                    />
-                    {/* <div className="avatar-container">
-                        <Link to={`/users/${currentUser.id}`}>{
-                            currentUser.username[0].toUpperCase()
-                        }</Link>
-                    </div> */}
-                    <div className="logout-container">
-                        <img src={window.logoutButton} onClick={props.logout}/>
+                    <div className="avatar-logout-container">
+                        <ProfileIcon
+                            currentUser={currentUser}
+                            image={false}
+                        />
+                        {/* <div className="avatar-container">
+                            <Link to={`/users/${currentUser.id}`}>{
+                                currentUser.username[0].toUpperCase()
+                            }</Link>
+                        </div> */}
+                        <div className="logout-container">
+                            <img src={window.logoutButton} onClick={props.logout}/>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         )

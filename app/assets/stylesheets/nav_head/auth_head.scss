@@ -31,10 +31,11 @@
     align-items: center;
 }
 
-.icon-container {
+.link-container.icon-container {
     margin: 0 0;
     height: 48px;
     width: 48px;
+    margin: 0;
     border-radius: 24px;
     display: flex;
     justify-content: center;
@@ -61,6 +62,14 @@
     border-right: 1px solid gray;
     margin: 0px 8px;
     height: 34px;
+}
+
+.avatar-logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+
 }
 
 .avatar-container {

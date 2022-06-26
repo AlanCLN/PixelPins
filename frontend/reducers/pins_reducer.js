@@ -1,4 +1,9 @@
-import { RECEIVE_PINS, RECEIVE_PIN, REMOVE_PIN } from '../actions/pin_actions';
+import { 
+    RECEIVE_PINS,
+    RECEIVE_PIN,
+    REMOVE_PIN,
+    RECEIVE_USER_PINS }
+from '../actions/pin_actions';
 
 const pinsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -10,6 +15,13 @@ const pinsReducer = (state = {}, action) => {
             return nextState;
         case RECEIVE_PIN:
             nextState[action.pin.id] = action.pin;
+            return nextState;
+        case RECEIVE_USER_PINS:
+            const pins = Object.values(action.pins);
+
+            pins.forEach(pin => {
+                nextState[pin.id] = pin
+            })
             return nextState;
         case REMOVE_PIN:
             delete nextState[action.pinId];

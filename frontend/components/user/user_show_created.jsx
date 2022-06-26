@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PinIndexItem from '../pins/pin_index_item';
 
 const UserShowCreated = (props) => {
-    debugger
 
+    const userParamsId = props.match.params.userId
+
+    useEffect(() => {
+        props.fetchUserPins();
+    }, [userParamsId])
+
+    const { user, pins } = props
+
+    if (!user || !pins) return null
     return (
-        <h1>User Show Created Page</h1>
+        <div className="saved-content">
+            <div className="saved-container">
+                {
+                    pins.map((pin, idx) => {
+                        return (
+                            <PinIndexItem
+                                key={idx}
+                                pin={pin}
+                            />
+                        )
+                    }) 
+                }
+            </div>
+        </div>
     )
 }
 
