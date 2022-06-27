@@ -68,8 +68,9 @@
 
 .pin-show-info-container {
     display: flex;
+    position: relative;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 30px;
     box-sizing: border-box;
     margin: 0 30px;
 
@@ -77,18 +78,33 @@
     height: 510px;
 }
 
+.pin-show-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .pin-show-title {
     font-size: 36px;
     font-weight: bold;
     padding: 8px;
-    position: relative;
     bottom: 90px;
 }
 
 .pin-show-description {
     font-size: 14px;
     padding: 8px;
-    position: relative;
     bottom: 90px;
     color: rgb(60, 60, 60);
+}
+
+.edit-delete-button-container {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 15px;
+}
+
+.show-edit-button-container, .show-delete-button-container {
+    margin: 0 5px;
 }

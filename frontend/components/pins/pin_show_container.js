@@ -6,7 +6,7 @@ import * as PinAPIUtil from "../../util/pin_api_util";
 const mSTP = (state, ownProps) => {
     return {
         pin: state.entities.pins[ownProps.match.params.pinId],
-        currentUserId: state.session.id,
+        currentUserId: state.session.id
     }
 }
 

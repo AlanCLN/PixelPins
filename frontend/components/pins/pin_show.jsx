@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import DeletePinButton from '../buttons/delete_pin_button';
+import EditPinButton from '../buttons/edit_pin_button';
+import SavePinButton from '../buttons/save_pin_button';
 
 const PinShow = (props) => {
 
@@ -30,11 +33,22 @@ const PinShow = (props) => {
                         <img src={pin.imageUrl} />
                     </div>
                     <div className="pin-show-info-container">
+                        <div className="pin-show-buttons-container">
+                            <SavePinButton />
+                        </div>
                         <div className="pin-show-title">
                             {pin.title}
                         </div>
                         <div className="pin-show-description">
                             {pin.description}
+                        </div>
+                        <div className="edit-delete-button-container">
+                            <div className="show-edit-button-container">
+                                <EditPinButton pinId={pin.id}/>
+                            </div>
+                            <div className="show-delete-button-container">
+                                <DeletePinButton />
+                            </div>
                         </div>
                     </div>
                 </div>

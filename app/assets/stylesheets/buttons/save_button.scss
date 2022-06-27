@@ -1,12 +1,7 @@
 @import '../variables.scss';
 
 .save-pin-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 15px;
-    margin-right: 15px;
-    min-width: 70px;
+    width: 70px;
     min-height: 40px;
     border-radius: 16px;
     border: none;
@@ -19,4 +14,12 @@
 
 .save-pin-button:hover {
     background-color: $red-button-hover;
+}
+
+.hidden-save-pin {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 15px;
 }
