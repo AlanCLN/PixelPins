@@ -4,10 +4,22 @@
     position: relative;
     width: 100%;
     height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+.splash-gradient {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-image : linear-gradient(to bottom, 
+    rgba(255,255,255, 0), 
+    rgba(255,255,255, 1) 100%);
 }
 
 .splash-page-text {
     position: absolute;
+    z-index: 10;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -40,7 +52,7 @@
     color: $splash-orange;
     position: absolute;
     opacity: 0;
-    animation: 18s linear slideDown1 infinite;
+    animation: 18s linear slideText1 infinite;
 }
 
 .destination {
@@ -48,7 +60,7 @@
     color: $splash-blue;
     position: absolute;
     opacity: 0;
-    animation: 18s linear slideDown2 infinite;
+    animation: 18s linear slideText2 infinite;
 }
 
 .hobby {
@@ -56,10 +68,10 @@
     color: $splash-green;
     position: absolute;
     opacity: 0;
-    animation: 18s linear slideDown3 infinite;
+    animation: 18s linear slideText3 infinite;
 }
 
-@keyframes slideDown1 {
+@keyframes slideText1 {
     0% {
         opacity: 0;
         transform: translateY(-80%)
@@ -85,7 +97,7 @@
     }
 }
 
-@keyframes slideDown2 {
+@keyframes slideText2 {
     33% {
         opacity: 0;
         transform: translateY(-80%);
@@ -113,7 +125,7 @@
 
 }
 
-@keyframes slideDown3 {
+@keyframes slideText3 {
     66% {
         opacity: 0;
         transform: translateY(-80%);
@@ -132,5 +144,156 @@
     100% {
         opacity: 0;
         transform: translateY(80%);
+    }
+}
+
+/* Splash Pictures */
+
+.splash-page-pics {
+    width: 100%;
+    height: auto;
+
+    position: relative;
+    top: 15%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.splash-columns {
+    min-width: 236px;
+    overflow: hidden;
+    height: 850px;
+    margin: 0 10px;
+}
+
+.splash-pics {
+    position: absolute;
+    top: 10%;
+}
+
+.splash-pin {
+
+    img {
+        width: 236px;
+        height: auto;
+        box-sizing: border-box;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+}
+
+#column1, #column7 {
+    position: relative;
+}
+
+#column2, #column6 {
+    margin-top: 100px;
+    position: relative;
+}
+
+#column3, #column5 {
+    margin-top: 150px;
+    position: relative;
+}
+
+#column4 {
+    margin-top: 250px;
+    position: relative;
+}
+
+.fave-dish {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    animation: 18s linear slidePics1 infinite;
+}
+
+.destinate {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    animation: 18s linear slidePics2 infinite;
+}
+
+.hobbies {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    animation: 18s linear slidePics3 infinite;
+}
+
+@keyframes slidePics1 {
+    0% {
+        opacity: 0;
+        transform: translateY(-10%)
+    }
+
+    7% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    27% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    33% {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+}
+
+@keyframes slidePics2 {
+    33% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+
+    40% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    66% {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+}
+
+@keyframes slidePics3 {
+    66% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+
+    73% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    93% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(10%);
     }
 }
