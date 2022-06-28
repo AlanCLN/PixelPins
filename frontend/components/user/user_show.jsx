@@ -57,7 +57,8 @@ const UserShow = (props) => {
                 {
                     boards.map((board, idx) => {
                         return (
-                            <BoardIndexItem 
+                            <BoardIndexItem
+                                openModal={props.openModal}
                                 board={board}
                                 key={idx}
                             />

@@ -1,3 +1,4 @@
+import { RECEIVE_BOARD } from '../actions/board_actions';
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
@@ -8,6 +9,8 @@ const modalReducer = (state = null, action) => {
         case CLOSE_MODAL:
             return null;
         case RECEIVE_CURRENT_USER:
+            return null;
+        case RECEIVE_BOARD:
             return null;
         default:
             return state;

@@ -55,6 +55,12 @@
         box-shadow: rgba(0, 132, 255, 0.5 ) 0 0 0 4px;
         outline: 0;
     }
+
+    p {
+        text-align: left;
+        margin-left: 8px;
+        color: $pinterest-red;
+    }
 }
 
 .create-board-button-container {

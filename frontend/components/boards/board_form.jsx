@@ -30,6 +30,13 @@ const BoardForm = (props) => {
                         onChange={handleNameChange}
                         placeholder='Like "Places to Go" or "Recipes to Make"'
                     />
+                    {
+                        props.errors.map(error => {
+                            return (
+                                <p>{error}</p>
+                            )
+                        })
+                    }
                     <div className="create-board-button-container">
                         <button onClick={handleBoardSubmit}>Create</button>
                     </div>
@@ -41,7 +48,7 @@ const BoardForm = (props) => {
 
 const mSTP = (state) => {
     return {
-
+        errors: state.errors.boards
     }
 }
 

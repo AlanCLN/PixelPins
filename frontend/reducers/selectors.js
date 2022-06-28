@@ -1,7 +1,7 @@
 export const filterUserPins = (state, userId) => {
     let result = [];
     // pins_array = Object.values(state.entities.pins);
-    if (!state.entities.users[userId].pins) {
+    if (!state.entities.users[userId]?.pins) {
         return null
     }
     const userPins = state.entities.users[userId].pins
@@ -14,7 +14,7 @@ export const filterUserPins = (state, userId) => {
 export const filterUserBoards = (state, userId) => {
     let result = [];
 
-    if (!state.entities.users[userId].boards) {
+    if (!state.entities.users[userId]?.boards) {
         return null
     }
     const userBoards = state.entities.users[userId].boards
