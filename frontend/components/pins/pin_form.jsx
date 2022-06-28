@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from "react-redux";
+import { createPin } from '../../actions/pin_actions';
 
-const PinCreateForm = (props) => {
+const PinForm = (props) => {
 
     const [state, setState] = useState(() => {
-        return {
-            title: '',
-            description: '',
-            imageFile: null,
-            imageUrl: null
-        }
+        return props.pin
     })
 
     const update = (field) => {
@@ -44,7 +41,7 @@ const PinCreateForm = (props) => {
         if (state.imageFile) {
             formData.append('pin[image]', state.imageFile);
         }
-        props.createPin(formData).then(() => {
+        props.processForm(formData).then(() => {
             props.history.goBack();
         })
     }
@@ -91,6 +88,9 @@ const PinCreateForm = (props) => {
                         </div>
                     </div>
                     <div className="info-container">
+                        <div className="form-type-container">
+                            <h1>{props.formType}</h1>
+                        </div>
                         <div className="pin-title-container">
                             <textarea
                                 className="pin-title-field"
@@ -116,11 +116,11 @@ const PinCreateForm = (props) => {
                                 ))
                             }
                         </div>
-                        <div className="create-pin-button-container">
+                        <div className="create-edit-pin-button-container">
                             <button
-                                className="create-pin-button"
+                                className="form-create-pin-button"
                                 onClick={handlePinSubmit}
-                                >Create
+                                >{props.formButton}
                             </button>
                         </div>
                     </div>
@@ -128,6 +128,6 @@ const PinCreateForm = (props) => {
             </div>
         </div>
     )
-}
+};
 
-export default PinCreateForm;
+export default PinForm;

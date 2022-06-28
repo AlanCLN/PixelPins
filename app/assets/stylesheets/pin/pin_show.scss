@@ -21,7 +21,7 @@
     left: 0;
     margin-top: 80px;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 80px);
     cursor: zoom-out;
 }
 
@@ -95,16 +95,4 @@
     padding: 8px;
     bottom: 90px;
     color: rgb(60, 60, 60);
-}
-
-.edit-delete-button-container {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 15px;
-}
-
-.show-edit-button-container, .show-delete-button-container {
-    margin: 0 5px;
 }

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PinIndexItem from './pin_index_item';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css';
+import { connect } from "react-redux";
+import { fetchPins } from "../../actions/pin_actions";
 
 // import ClipLoader from "react-spinners/ClipLoader";
 // import sleep from '../../util/sleep';
-
 
 const PinIndex = (props) => {
 
@@ -36,7 +37,7 @@ const PinIndex = (props) => {
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
-                columnclassName="my-masonry-grid_column"
+                columnClassName="my-masonry-grid_column"
             >
                 {
                     pins.map(pin => {
@@ -50,7 +51,9 @@ const PinIndex = (props) => {
                 }
             </Masonry>
             <div className="create-button-container">
-                <Link to="/builder" className="create-button">+</Link>
+                <div className="create-dropdown-btn">+
+                    <Link to="/builder" className="create-button">+</Link>
+                </div>
             </div>
             {/* <div className="loading-page" onLoad={hideLoader}>
                 <ClipLoader
@@ -61,6 +64,18 @@ const PinIndex = (props) => {
             </div> */}
         </div>
     )
+};
+
+const mSTP = (state) => {
+    return {
+        pins: Object.values(state.entities.pins)
+    }
 }
 
-export default PinIndex;
+const mDTP = (dispatch) => {
+    return {
+        fetchPins: () => dispatch(fetchPins())
+    }
+}
+
+export default connect(mSTP, mDTP)(PinIndex);

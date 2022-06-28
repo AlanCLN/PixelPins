@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileIcon from '../user/profile_icon';
+import { connect } from "react-redux";
+import { openModal, closeModal } from "../../actions/modal_actions";
+import { logout } from '../../actions/session_actions';
 
 const NavHead = (props) => {
     
@@ -107,4 +110,17 @@ const NavHead = (props) => {
 
 }
 
-export default NavHead;
+const mSTP = (state) => {
+    return {
+        currentUser: state.entities.users[state.session.id]
+    }
+}
+
+const mDTP = (dispatch) => {
+    return {
+        logout: () => dispatch(logout()),
+        openModal: (formType) => dispatch(openModal(formType))
+    }
+}
+
+export default connect(mSTP, mDTP)(NavHead);

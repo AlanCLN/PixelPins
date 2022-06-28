@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import DeletePinButton from '../buttons/delete_pin_button';
 import EditPinButton from '../buttons/edit_pin_button';
 import SavePinButton from '../buttons/save_pin_button';
+import { connect } from "react-redux";
+import { fetchPin } from '../../actions/pin_actions';
 
 const PinShow = (props) => {
 
@@ -42,19 +44,32 @@ const PinShow = (props) => {
                         <div className="pin-show-description">
                             {pin.description}
                         </div>
-                        <div className="edit-delete-button-container">
-                            <div className="show-edit-button-container">
-                                <EditPinButton pinId={pin.id}/>
+                        {props.currentUserId === pin.uploaderId &&
+                            <div className="edit-delete-button-container">
+                                <div className="show-edit-button-container">
+                                    <EditPinButton pinId={pin.id}/>
+                                </div>
                             </div>
-                            <div className="show-delete-button-container">
-                                <DeletePinButton />
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
         </div>
     )
+};
+
+const mSTP = (state, ownProps) => {
+    return {
+        pin: state.entities.pins[ownProps.match.params.pinId],
+        currentUserId: state.session.id
+    }
 }
 
-export default PinShow;
+const mDTP = (dispatch) => {
+    return {
+        fetchPin: (pinId) => dispatch(fetchPin(pinId)),
+        fetchUser: (userId) => dispatch(fetchUser(userId))
+    }
+}
+
+export default connect(mSTP, mDTP)(PinShow);

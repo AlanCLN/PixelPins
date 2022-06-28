@@ -31,6 +31,9 @@ class Api::PinsController < ApplicationController
 
     def update
         @pin = Pin.with_attached_image.find_by(id: params[:id])
+        if @pin.uploader_id != current_user.id
+            return render json: ["Stop it"], status: 401
+        end
         if @pin.update(pin_params)
             render :show
         else
@@ -40,6 +43,9 @@ class Api::PinsController < ApplicationController
 
     def destroy
         @pin = Pin.find_by(id: params[:id])
+        if @pin.uploader_id != current_user.id
+            return render json: ["Stop it"], status: 401
+        end
         if @pin && @pin.destroy
             render json: ["Successfully Deleted"], status: 200
         else

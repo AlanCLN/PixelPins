@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     end
 
     def require_logged_in
-        redirect_to "/" unless logged_in?
+        render json: ["You've been logged out"] unless logged_in?
     end
 
     def logged_in?

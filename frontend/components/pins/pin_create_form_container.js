@@ -1,17 +1,24 @@
 import { connect } from "react-redux";
-import PinCreateForm from "./pin_create_form";
-import { createPin } from '../../actions/pin_actions';
+import PinForm from "./pin_form";
 
 const mSTP = (state) => {
     return {
+        formType: 'Create Pin',
+        formButton: 'Create',
         errors: state.errors.pins,
+        pin: {
+            title: '',
+            description: '',
+            imageFile: null,
+            imageUrl: null
+        }
     }
 }
 
 const mDTP = (dispatch) => {
     return {
-        createPin: pin => dispatch(createPin(pin)),
+        processForm: pin => dispatch(createPin(pin)),
     }
 }
 
-export default connect(mSTP, mDTP)(PinCreateForm);
+export default connect(mSTP, mDTP)(PinForm);

@@ -153,6 +153,18 @@
     width: 100%;
 }
 
+.form-type-container {
+    width: 100%;
+
+    h1 {
+        font-weight: bold;
+        font-size: 30px;
+        margin-left: 10px;
+        text-decoration: underline;
+        color: $charcoal;
+    }
+}
+
 .info-container {
     display: flex;
     align-items: center;
@@ -224,7 +236,7 @@
     }
 }
 
-.create-pin-button-container {
+.create-edit-pin-button-container {
     width: 100%;
     margin-top: 20px;
 
@@ -233,7 +245,7 @@
         border: none;
         color: white;
         height: 40px;
-        width: 65px;
+        width: 80px;
         border-radius: 24px;
         font-size: 16px;
         font-weight: 550;
@@ -245,4 +257,14 @@
     }
 }
 
+/* Edit Form Styles */
 
+.edit-form-image-container {
+    width: 380px;
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+    }
+}
