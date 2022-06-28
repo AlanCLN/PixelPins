@@ -1,4 +1,7 @@
 .board-modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: gray;
     border-radius: 12px;
     height: 300px;

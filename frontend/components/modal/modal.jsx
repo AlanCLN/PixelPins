@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
-import CreateBoardModalContainer from '../boards/create_board_modal';
+import CreateBoardModalContainer from '../boards/create_board_modal_container';
 
 const Modal = ({modal, closeModal}) => {
 
