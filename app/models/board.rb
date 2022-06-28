@@ -10,8 +10,7 @@
 #  updated_at  :datetime         not null
 #
 class Board < ApplicationRecord
-    validates :name, :user_id, null: false
-
+    validates :name, :user_id, presence: true
 
     belongs_to :user,
     class_name: 'User',

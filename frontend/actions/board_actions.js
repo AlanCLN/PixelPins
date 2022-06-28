@@ -51,7 +51,7 @@ export const createBoard = (board) => {
     return (dispatch) => {
         return BoardAPIUtil.createBoard(board).then(board =>
             dispatch(receiveBoard(board)), err =>
-            dispatch(receiveBoardErrors(err.responseJSON))
+            dispatch(receiveBoardErrors(err))
         )
     }
 }

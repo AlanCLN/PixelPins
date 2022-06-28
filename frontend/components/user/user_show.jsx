@@ -20,18 +20,17 @@ const UserShow = (props) => {
     //     : null
     // }
 
-    const handleOpenModal = (formType) => {
-        return e => {
-            e.preventDefault();
-            props.openModal(formType);
-        }
-    }
+    // const handleOpenModal = (formType) => {
+    //     return e => {
+    //         e.preventDefault();
+    //         props.openModal(formType);
+    //     }
+    // }
     
-
     const { user } = props
 
     if (!user) return null;
-    return ( 
+    return (
         <div className="user-show-page">
             <div className="user-show-info">
                 <Avatar
@@ -68,7 +67,7 @@ const UserShow = (props) => {
                 <div className="create-dropdown-btn">+
                     <div className="dropdown-content">
                         <Link to="/builder" className="create-button">Create Pin</Link>
-                        <div onClick={handleOpenModal('board')}>Create Board</div>
+                        <div onClick={() => props.openModal('board')}>Create Board</div>
                     </div>
                 </div>
             </div>

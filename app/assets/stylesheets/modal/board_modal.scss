@@ -1,9 +1,85 @@
+@import '../variables.scss';
+
 .board-modal-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
+    width: 540px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
     border-radius: 12px;
-    height: 300px;
-    width: 120px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 10px 24px;
+
+    h1 {
+        font-size: 28px;
+        font-weight: 550;
+        padding: 20px 0;
+    }
+}
+
+.board-modal-form-container {
+    display: flex;
+
+}
+
+.board-modal-form {
+    width: 100%;
+    
+    display: block;
+
+
+    label {
+        display: flex;
+        font-size: 14px;
+        text-align: left;
+        margin: 8px 0px;
+        margin-left: 8px;
+        cursor: pointer;
+    }
+
+    input {
+        display: block;
+        box-sizing: border-box;
+        font-size: 16px;
+        min-height: 48px;
+        width: 484px;
+        padding: 8px 16px;
+        margin: 8px 0px;
+        border-radius: 16px;
+        border-style: solid;
+        border-color: #cdcdcd;
+    }
+
+    input:focus {
+        box-shadow: rgba(0, 132, 255, 0.5 ) 0 0 0 4px;
+        outline: 0;
+    }
+}
+
+.create-board-button-container {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+
+
+    button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 0px;
+        font-size: 15px;
+        font-weight: bold;
+        width: 66px;
+        height: 40px;
+        display: inline-block;
+        color: white;
+        background-color: $pinterest-red;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: $red-button-hover;
+    }
 }

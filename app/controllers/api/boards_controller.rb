@@ -3,7 +3,7 @@ class Api::BoardsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        @boards = Board.all
+        @boards = Board.where('user_id = ?', params[:user_id])
     end
 
     def show
@@ -19,7 +19,7 @@ class Api::BoardsController < ApplicationController
             return render json: ["Stop it"], status: 401
         end
 
-        if @pin.save
+        if @board.save
             render :show
         else
             render json: @board.errors.full_messages, status: 422
@@ -46,7 +46,7 @@ class Api::BoardsController < ApplicationController
 
     private
     def board_params
-        params.require(:board).permit(:name, :description, :user_id)
+        params.require(:board).permit(:name, :user_id)
     end
     
 end
