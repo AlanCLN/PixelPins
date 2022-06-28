@@ -8,8 +8,9 @@
 
 require 'open-uri'
 
-User.destroy_all
+Board.destroy_all
 Pin.destroy_all
+User.destroy_all
 
 user1 = User.create!({username: "demoUser", password: "demouser"})
 user2 = User.create!({username: "chandler", password: "testing"})
@@ -171,3 +172,34 @@ pin30 = Pin.new({title: 'look at this place', description: "it's beautiful", upl
 image30 = URI.open("https://pixel-pins-seeds.s3.amazonaws.com/journey10.jpg")
 pin30.image.attach(io: image30, filename: 'journey10.jpg')
 pin30.save!
+
+board1 = Board.create!({name: 'wow', user_id: user1.id})
+board2 = Board.create!({name: 'amazing', user_id: user1.id})
+board3 = Board.create!({name: 'fascinating', user_id: user1.id})
+board4 = Board.create!({name: 'awesome', user_id: user2.id})
+board5 = Board.create!({name: 'look at this', user_id: user2.id})
+board6 = Board.create!({name: 'stunning', user_id: user2.id})
+board7 = Board.create!({name: 'incredible', user_id: user3.id})
+board8 = Board.create!({name: 'wonderful', user_id: user3.id})
+board9 = Board.create!({name: 'marvelous', user_id: user3.id})
+board10 = Board.create!({name: 'grand', user_id: user4.id})
+board11 = Board.create!({name: 'staggering', user_id: user4.id})
+board12 = Board.create!({name: 'lovely', user_id: user4.id})
+board13 = Board.create!({name: 'sheeesh', user_id: user5.id})
+board14 = Board.create!({name: 'wooahh', user_id: user5.id})
+board15 = Board.create!({name: 'spectaculr', user_id: user5.id})
+board16 = Board.create!({name: 'okayy', user_id: user6.id})
+board17 = Board.create!({name: 'majestic', user_id: user6.id})
+board18 = Board.create!({name: 'astounding', user_id: user6.id})
+board19 = Board.create!({name: 'impressive', user_id: user7.id})
+board20 = Board.create!({name: 'unbelievable', user_id: user7.id})
+board21 = Board.create!({name: 'my goodness', user_id: user7.id})
+board22 = Board.create!({name: 'mind boggling', user_id: user8.id})
+board23 = Board.create!({name: 'sensational', user_id: user8.id})
+board24 = Board.create!({name: 'mmmm', user_id: user8.id})
+board25 = Board.create!({name: 'beautiful', user_id: user9.id})
+board26 = Board.create!({name: 'outstanding', user_id: user9.id})
+board27 = Board.create!({name: 'holy moly', user_id: user9.id})
+board28 = Board.create!({name: 'wowzer', user_id: user10.id})
+board29 = Board.create!({name: 'phenomenal', user_id: user10.id})
+board30 = Board.create!({name: 'extraordinary', user_id: user10.id})

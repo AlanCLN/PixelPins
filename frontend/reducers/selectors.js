@@ -10,3 +10,16 @@ export const filterUserPins = (state, userId) => {
     })
     return result;
 }
+
+export const filterUserBoards = (state, userId) => {
+    let result = [];
+
+    if (!state.entities.users[userId].boards) {
+        return null
+    }
+    const userBoards = state.entities.users[userId].boards
+    userBoards.forEach(boardId => {
+        result.push(state.entities.boards[boardId])
+    })
+    return result;
+}

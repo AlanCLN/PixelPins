@@ -14,7 +14,6 @@ const BoardForm = (props) => {
 
     const handleBoardSubmit = (e) => {
         e.preventDefault();
-        debugger
         props.createBoard(state);
     }
 

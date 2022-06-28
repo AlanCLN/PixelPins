@@ -7,7 +7,6 @@ const boardErrorsReducer = (state = _nullErrors, action) => {
 
     switch (action.type) {
         case RECEIVE_BOARD_ERRORS:
-            debugger
             return action.errors
         default:
             return state;

@@ -1,13 +1,13 @@
 import * as BoardAPIUtil from '../util/board_api_util';
 
-export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
+export const RECEIVE_USER_BOARDS = 'RECEIVE_BOARDS';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const REMOVE_BOARD = 'REMOVE_BOARD';
 export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 
-const receiveBoards = (boards) => {
+const receiveUserBoards = (boards) => {
     return {
-        type: RECEIVE_BOARDS,
+        type: RECEIVE_USER_BOARDS,
         boards
     }
 }
@@ -33,10 +33,10 @@ const receiveBoardErrors = (errors) => {
     }
 }
 
-export const fetchBoards = () => {
+export const fetchUserBoards = (userId) => {
     return (dispatch) => {
-        return BoardAPIUtil.fetchBoards()
-        .then(boards => dispatch(receiveBoards(boards)))
+        return BoardAPIUtil.fetchUserBoards(userId)
+        .then(boards => dispatch(receiveUserBoards(boards)))
     }
 }
 

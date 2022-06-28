@@ -4,14 +4,18 @@ import Avatar from './avatar';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
 import { openModal } from '../../actions/modal_actions';
-
+import { fetchUserBoards } from '../../actions/board_actions';
+import { filterUserBoards } from '../../reducers/selectors';
+import BoardIndexItem from '../boards/board_index_item';
 
 const UserShow = (props) => {
 
     const userParamsId = props.match.params.userId
 
     useEffect(() => {
-        props.fetchUser(props.match.params.userId)
+        props.fetchUser(userParamsId).then(() => {
+            props.fetchUserBoards()
+        })
     }, [userParamsId]);
 
     // const followButton = () => {
@@ -27,9 +31,9 @@ const UserShow = (props) => {
     //     }
     // }
     
-    const { user } = props
+    const { user, boards } = props
 
-    if (!user) return null;
+    if (!user || !boards) return null;
     return (
         <div className="user-show-page">
             <div className="user-show-info">
@@ -48,6 +52,18 @@ const UserShow = (props) => {
                 <div className="follow-button-container">
                     {/* {followButton()} */}
                 </div>
+            </div>
+            <div className="board-index-content">
+                {
+                    boards.map((board, idx) => {
+                        return (
+                            <BoardIndexItem 
+                                board={board}
+                                key={idx}
+                            />
+                        )
+                    })
+                }
             </div>
             <div className="created-saved-container">
                 <div className="show-tab">
@@ -76,14 +92,18 @@ const UserShow = (props) => {
 }
 
 const mSTP = (state, ownProps) => {
+    const userId = ownProps.match.params.userId
     return {
-        user: state.entities.users[ownProps.match.params.userId]
+        user: state.entities.users[userId],
+        boards: filterUserBoards(state, userId)
     }
 }
 
-const mDTP = (dispatch) => {
+const mDTP = (dispatch, ownProps) => {
+    const userId = ownProps.match.params.userId
     return {
         fetchUser: (userId) => dispatch(fetchUser(userId)),
+        fetchUserBoards: () => dispatch(fetchUserBoards(userId)),
         openModal: (formType) => dispatch(openModal(formType))
     }
 }
