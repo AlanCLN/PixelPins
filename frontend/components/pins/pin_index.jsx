@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css';
 import { connect } from "react-redux";
 import { fetchPins } from "../../actions/pin_actions";
+import { openModal } from '../../actions/modal_actions';
 
 // import ClipLoader from "react-spinners/ClipLoader";
 // import sleep from '../../util/sleep';
@@ -22,8 +23,11 @@ const PinIndex = (props) => {
         loadingFunction();
     }, [])
 
-    const handleCreateBoardModal = (e) => {
-        e.preventDefault();
+    const handleOpenModal = (formType) => {
+        return e => {
+            e.preventDefault();
+            props.openModal(formType);
+        }
     }
 
     const breakpoints = {
@@ -58,7 +62,7 @@ const PinIndex = (props) => {
                 <div className="create-dropdown-btn">+
                     <div className="dropdown-content">
                         <Link to="/builder" className="create-button">Create Pin</Link>
-                        <div onClick={handleCreateBoardModal}>Create Board</div>
+                        <div onClick={handleOpenModal('board')}>Create Board</div>
                     </div>
                 </div>
             </div>
@@ -81,7 +85,8 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        fetchPins: () => dispatch(fetchPins())
+        fetchPins: () => dispatch(fetchPins()),
+        openModal: (formType) => dispatch(openModal(formType))
     }
 }
 

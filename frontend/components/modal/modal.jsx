@@ -1,8 +1,9 @@
 import React from 'react';
-import LoginFormContainer from '../session/login_form_container';
-import SignupFormContainer from '../session/signup_form_container';
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
+import LoginFormContainer from '../session/login_form_container';
+import SignupFormContainer from '../session/signup_form_container';
+import CreateBoardModalContainer from '../boards/create_board_modal';
 
 const Modal = ({modal, closeModal}) => {
 
@@ -17,6 +18,8 @@ const Modal = ({modal, closeModal}) => {
         case 'signup':
             component = <SignupFormContainer />;
             break;
+        case 'board':
+            component = <CreateBoardModalContainer />;
         default:
             return null;
     }

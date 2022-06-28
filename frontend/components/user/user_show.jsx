@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import Avatar from './avatar';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
+import { openModal } from '../../actions/modal_actions';
+
 
 const UserShow = (props) => {
 
@@ -17,6 +19,13 @@ const UserShow = (props) => {
     //     ? <button className="follow-button">Follow</button>
     //     : null
     // }
+
+    const handleOpenModal = (formType) => {
+        return e => {
+            e.preventDefault();
+            props.openModal(formType);
+        }
+    }
     
 
     const { user } = props
@@ -59,7 +68,7 @@ const UserShow = (props) => {
                 <div className="create-dropdown-btn">+
                     <div className="dropdown-content">
                         <Link to="/builder" className="create-button">Create Pin</Link>
-                        <div>Create Board</div>
+                        <div onClick={handleOpenModal('board')}>Create Board</div>
                     </div>
                 </div>
             </div>
@@ -75,7 +84,8 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch) => {
     return {
-        fetchUser: (userId) => dispatch(fetchUser(userId))
+        fetchUser: (userId) => dispatch(fetchUser(userId)),
+        openModal: (formType) => dispatch(openModal(formType))
     }
 }
 
