@@ -22,6 +22,10 @@ const PinIndex = (props) => {
         loadingFunction();
     }, [])
 
+    const handleCreateBoardModal = (e) => {
+        e.preventDefault();
+    }
+
     const breakpoints = {
         default: 7,
         1850: 6,
@@ -52,7 +56,10 @@ const PinIndex = (props) => {
             </Masonry>
             <div className="create-button-container">
                 <div className="create-dropdown-btn">+
-                    <Link to="/builder" className="create-button">+</Link>
+                    <div className="dropdown-content">
+                        <Link to="/builder" className="create-button">Create Pin</Link>
+                        <div onClick={handleCreateBoardModal}>Create Board</div>
+                    </div>
                 </div>
             </div>
             {/* <div className="loading-page" onLoad={hideLoader}>

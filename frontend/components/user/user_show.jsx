@@ -17,6 +17,7 @@ const UserShow = (props) => {
     //     ? <button className="follow-button">Follow</button>
     //     : null
     // }
+    
 
     const { user } = props
 
@@ -39,9 +40,6 @@ const UserShow = (props) => {
                 <div className="follow-button-container">
                     {/* {followButton()} */}
                 </div>
-                <div className="create-button-container">
-                    <Link to="/builder" className="create-button">+</Link>
-                </div>
             </div>
             <div className="created-saved-container">
                 <div className="show-tab">
@@ -55,6 +53,14 @@ const UserShow = (props) => {
                         to={`/users/${user.id}/saved`}
                         activeClassName='saved-tab active-show'
                     >Saved</NavLink>
+                </div>
+            </div>
+            <div className="create-button-container">
+                <div className="create-dropdown-btn">+
+                    <div className="dropdown-content">
+                        <Link to="/builder" className="create-button">Create Pin</Link>
+                        <div>Create Board</div>
+                    </div>
                 </div>
             </div>
         </div>
