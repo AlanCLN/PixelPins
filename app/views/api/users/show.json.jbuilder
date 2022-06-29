@@ -11,3 +11,9 @@ boards_array = []
     boards_array << board.id
 end
 json.boards boards_array
+
+saved_pins_array = []
+@user.saved_pins.each do |pin|
+    saved_pins_array << pin.id
+end
+json.saved_pins saved_pins_array

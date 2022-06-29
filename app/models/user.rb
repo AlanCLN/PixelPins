@@ -32,6 +32,51 @@ class User < ApplicationRecord
     through: :savedpin_relationships,
     source: :pin
 
+    def save_pin(pin)
+        savedpin_relationships.create(pin_id: pin.id)
+    end
+
+    def unsave_pin(pin)
+        savedpin_relationships.find_by(pin_id: pin.id).destroy
+    end
+
+    def saved_pin?(pin)
+        saved_pins.include?(pin)
+    end
+
+    has_many :active_friendships,
+    class_name: 'Follow',
+    foreign_key: :follower_id,
+    dependent: :destroy
+
+    has_many :passive_friendships,
+    class_name: 'Follow',
+    foreign_key: :followed_id,
+    dependent: :destroy
+
+    has_many :following,
+    through: :active_friendships,
+    source: :followed
+
+    has_many :followers,
+    through: :passive_friendships,
+    source: :follower
+
+    def follow(user)
+        active_friendships.create(followed_id: user.id)
+    end
+
+    def unfollow(user)
+        active_friendships.find_by(followed_id: user.id).destroy
+    end
+
+    def follow?(user)
+        following.include?(user)
+    end
+
+
+
+
 
     attr_reader :password
     after_initialize :ensure_session_token

@@ -7,10 +7,12 @@ import { fetchPin } from '../../actions/pin_actions';
 
 const PinShow = (props) => {
 
+    const pinParamsId = props.match.params.pinId
+
     useEffect(() => {
         props.fetchPin(props.match.params.pinId)
         // fetchPinShowInfo();
-    }, [])
+    }, [pinParamsId])
 
     // async function fetchPinShowInfo() {
     //     await props.fetchPin(props.match.params.pinId);

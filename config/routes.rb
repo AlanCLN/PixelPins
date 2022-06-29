@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]  #login, logout
     resources :pins, only: [:index, :show, :create, :update, :destroy]
     resources :boards, only: [:show, :create, :update, :destroy]
+
+    resources :saved_pins, only: [:create, :destroy]
+    resources :pin_boards, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy]
   end
 end

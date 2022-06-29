@@ -10,6 +10,7 @@ import UserShowCreatedContainer from './user/user_show_created';
 import UserShowSavedContainer from './user/user_show_saved';
 import PinCreateFormContainer from './pins/pin_create_form_container';
 import PinEditFormContainer from './pins/pin_edit_form_container';
+import BoardShowContainer from './boards/board_show';
 import SplashPage from "./splash/splash";
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
       <ProtectedRoute path="/users/:userId" component={UserShowContainer} />
       <ProtectedRoute path="/users/:userId/created" component={UserShowCreatedContainer} />
       <ProtectedRoute path="/users/:userId/saved" component={UserShowSavedContainer} />
+      <ProtectedRoute path="/boards/:boardId" component={BoardShowContainer}/>
       <ProtectedRoute path="/pins/:pinId/edit" component={PinEditFormContainer} />
       <ProtectedRoute exact path="/pins/:pinId" component={PinShowContainer} />
       <ProtectedRoute exact path="/builder" component={PinCreateFormContainer} />

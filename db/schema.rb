@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_28_040358) do
+ActiveRecord::Schema.define(version: 2022_06_29_001701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,12 +44,23 @@ ActiveRecord::Schema.define(version: 2022_06_28_040358) do
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
   create_table "pin_boards", force: :cascade do |t|
     t.integer "pin_id", null: false
     t.integer "board_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_pin_boards_on_board_id"
+    t.index ["pin_id", "board_id"], name: "index_pin_boards_on_pin_id_and_board_id", unique: true
     t.index ["pin_id"], name: "index_pin_boards_on_pin_id"
   end
 
