@@ -1,7 +1,18 @@
 class Api::SavedPinsController < ApplicationController
 
     skip_before_action :verify_authenticity_token
-    before_action :require_logged_in, only: [:create, :destroy]
+    before_action :require_logged_in, only: [:index, :create, :destroy]
+
+    def index
+        if (params[:user_id])
+            user = User.find_by(id: params[:user_id])
+            @pins = user.saved_pins
+            render "api/pins/index"
+        else
+            render json: ["Something went wrong"], status: 422
+        end
+    end
+
 
     def create
         @pin = Pin.find_by(id: params[:pin_id])

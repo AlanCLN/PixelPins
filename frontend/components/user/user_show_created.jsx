@@ -22,11 +22,13 @@ const UserShowCreated = (props) => {
         1630: 5,
         1340: 4,
         1080: 3,
+        740: 2,
+        500: 1
     }
 
     if (!user || !pins) return null
     return (
-        <div className="saved-content">
+        <div className="created-content">
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"

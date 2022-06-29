@@ -2,7 +2,7 @@ import {
     RECEIVE_PINS,
     RECEIVE_PIN,
     REMOVE_PIN,
-    RECEIVE_USER_PINS }
+    RECEIVE_FILTERED_PINS }
 from '../actions/pin_actions';
 
 const pinsReducer = (state = {}, action) => {
@@ -16,7 +16,7 @@ const pinsReducer = (state = {}, action) => {
         case RECEIVE_PIN:
             nextState[action.pin.id] = action.pin;
             return nextState;
-        case RECEIVE_USER_PINS:
+        case RECEIVE_FILTERED_PINS:
             const pins = Object.values(action.pins);
 
             pins.forEach(pin => {

@@ -74,10 +74,6 @@ class User < ApplicationRecord
         following.include?(user)
     end
 
-
-
-
-
     attr_reader :password
     after_initialize :ensure_session_token
 

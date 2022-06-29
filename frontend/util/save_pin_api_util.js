@@ -12,3 +12,12 @@ export const unsavePin = (pinId) => {
         url: `api/saved_pins/${pinId}`
     })
 }
+
+export const fetchUserSavedPins = (userId) => {
+    return $.ajax({
+        method: 'GET',
+        url: 'api/saved_pins',
+        data: { user_id: userId}
+
+    })
+}
