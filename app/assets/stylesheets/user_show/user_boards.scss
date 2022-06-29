@@ -6,8 +6,13 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 
     box-sizing: border-box;
     border-bottom: 1px solid lightgray;
+}
+
+@media only screen and (max-width: 660px) {
+    .board-index-content {
+        justify-content: center;
+    }
 }

@@ -34,6 +34,18 @@ class Pin < ApplicationRecord
     through: :pinboard_relationships,
     source: :board
 
+    def pin_to_board(board)
+        pinboard_relationships.create(board_id: board.id)
+    end
+
+    def unpin_from_board(board)
+        pinboard_relationships.find_by(board_id: board.id).destroy
+    end
+
+    def pin_on_board?(board)
+        boards.include?(board)
+    end
+
     has_many :savedpin_relationships,
     class_name: 'SavedPin',
     foreign_key: :pin_id,

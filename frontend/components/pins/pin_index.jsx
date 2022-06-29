@@ -51,7 +51,7 @@ const PinIndex = (props) => {
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column"
+                columnClassName="my-masonry-grid-column"
             >
                 {
                     pins.map(pin => {

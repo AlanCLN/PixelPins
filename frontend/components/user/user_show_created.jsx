@@ -32,7 +32,7 @@ const UserShowCreated = (props) => {
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column"
+                columnClassName="user-show-my-masonry-grid_column"
             >
                 {
                     pins.map((pin, idx) => {

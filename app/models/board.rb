@@ -23,4 +23,17 @@ class Board < ApplicationRecord
     has_many :pins,
     through: :pinboard_relationships,
     source: :pin
+
+    def add_pin(pin_id)
+        pinboard_relationships.create(pin_id: pin_id)
+    end
+
+    def remove_pin(pin_id)
+        pinboard_relationships.find_by(pin_id: pin_id).destroy
+    end
+
+    def has_pin?(pin)
+        pins.include?(pin)
+    end
+
 end
