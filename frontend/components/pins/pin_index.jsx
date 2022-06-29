@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import PinIndexItem from './pin_index_item';
+import PinIndexItemContainer from './pin_index_item';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css';
 import { connect } from "react-redux";
 import { fetchPins } from "../../actions/pin_actions";
 import { openModal } from '../../actions/modal_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 // import ClipLoader from "react-spinners/ClipLoader";
 // import sleep from '../../util/sleep';
@@ -14,14 +15,19 @@ const PinIndex = (props) => {
     // const [loading, setLoading] = useState(true);
     const { pins, fetchPins } = props;
 
-    const loadingFunction = async () => {
-        // setLoading(true);
-        await fetchPins();
-    }
-
+    // const loadingFunction = async () => {
+    //     // setLoading(true);
+    //     await fetchPins();
+    // }
     useEffect(() => {
-        loadingFunction();
+        fetchPins()
     }, [])
+
+    // useEffect(() => {
+    //     debugger
+    //     // loadingFunction();
+    //     fetchPins();
+    // }, [])
 
     const handleOpenModal = (formType) => {
         return e => {
@@ -50,7 +56,7 @@ const PinIndex = (props) => {
                 {
                     pins.map(pin => {
                         return (
-                            <PinIndexItem 
+                            <PinIndexItemContainer
                                 pin={pin}
                                 key={pin.id}
                             />
@@ -79,7 +85,8 @@ const PinIndex = (props) => {
 
 const mSTP = (state) => {
     return {
-        pins: Object.values(state.entities.pins)
+        pins: Object.values(state.entities.pins),
+        currentUser: state.entities.users[state.session.id]
     }
 }
 

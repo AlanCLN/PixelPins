@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProfileIcon from '../user/profile_icon';
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { logout } from '../../actions/session_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 const NavHead = (props) => {
     
     const { currentUser, logout } = props;
+
+    useEffect(() => {
+        if (currentUser) {
+            props.fetchCurrentUser(currentUser.id)
+        }
+    }, [])
 
     const openModal = (formType) => {
         return e => {
@@ -119,7 +126,8 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         logout: () => dispatch(logout()),
-        openModal: (formType) => dispatch(openModal(formType))
+        openModal: (formType) => dispatch(openModal(formType)),
+        fetchCurrentUser: (userId) => dispatch(fetchUser(userId))
     }
 }
 

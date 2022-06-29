@@ -1,18 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const SavePinButton = (props) => {
 
+    const { pin, currentUser, savePin, unsavePin } = props
+
+    const [saved, setSaved] = useState(() => {
+        return currentUser.savedPins.includes(pin.id)
+    })
+
     const handleSavePin = (e) => {
         e.preventDefault();
-        console.log('save pin')
+        setSaved(!saved)
+        savePin(pin.id)
     }
 
-    return (
-        <button
-            className="save-pin-button"
-            onClick={handleSavePin}
-        >Save</button>
-    )
+    const handleUnSavePin = (e) => {
+        e.preventDefault();
+        setSaved(!saved)
+        unsavePin(pin.id)
+    }
+
+    const saveButton = () => {
+        return (
+            <button
+                className="save-pin-button"
+                onClick={handleSavePin}
+            >Save</button>
+        )
+    }
+
+    const unsaveButton = () => {
+        return (
+            <button
+                className="unsave-pin-button"
+                onClick={handleUnSavePin}
+            >unSave</button>
+        )
+    }
+
+    return saved ? unsaveButton() : saveButton();
 }
 
 export default SavePinButton;
