@@ -26,7 +26,6 @@ class Api::PinBoardsController < ApplicationController
     def destroy
         @board ||= Board.find_by(id: params[:board_id])
         @pin ||= Pin.find_by(id: params[:pin_id])
-        byebug
         if !@board || !@pin
             render json: ["Something went wrong"], status: 422
         end

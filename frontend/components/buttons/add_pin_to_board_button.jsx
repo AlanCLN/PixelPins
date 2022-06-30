@@ -1,25 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const AddPinToBoardButton = (props) => {
 
-    const { pin, board, pinToBoard, unpinFromBoard } = props
-
-    const [add, setAdd] = useState(() => {
-        return board.pins.includes(pin.id)
-    })
-    console.log('pin:', pinToBoard)
-    console.log('board', unpinFromBoard)
+    const { pin, board, pinToBoard } = props
 
     const handleAddPin = (e) => {
         e.preventDefault();
-        setAdd(!add)
         pinToBoard(board.id, pin.id)
-    }
-
-    const handleUnAddPin = (e) => {
-        e.preventDefault();
-        setAdd(!add)
-        unpinFromBoard(board.id, pin.id)
     }
 
     const addButton = () => {
@@ -31,16 +18,7 @@ const AddPinToBoardButton = (props) => {
         )
     }
 
-    const unAddButton = () => {
-        return (
-            <button
-                className="unadd-pin-button"
-                onClick={handleUnAddPin}
-            >Remove</button>
-        )
-    }
-
-    return add ? unAddButton() : addButton();
+    return addButton();
 }
 
 export default AddPinToBoardButton;

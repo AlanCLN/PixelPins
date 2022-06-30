@@ -6,7 +6,7 @@ import { fetchUser } from '../../actions/user_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchUserBoards } from '../../actions/board_actions';
 import { filterUserBoards } from '../../reducers/selectors';
-import BoardIndexItem from '../boards/board_index_item';
+import BoardPreview from '../boards/board_preview';
 
 const UserShow = (props) => {
 
@@ -57,7 +57,7 @@ const UserShow = (props) => {
                 {
                     boards.map((board, idx) => {
                         return (
-                            <BoardIndexItem
+                            <BoardPreview
                                 openModal={props.openModal}
                                 board={board}
                                 key={idx}

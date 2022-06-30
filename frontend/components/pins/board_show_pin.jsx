@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import SavePinButton from '../buttons/save_pin_button';
-import { savePin, unsavePin } from '../../actions/save_pin_actions';
+import AddPinToBoardButton from '../buttons/add_pin_to_board_button';
+import RemovePinFromBoardButton from '../buttons/remove_pin_from_board_button';
+import { pinToBoard, unpinFromBoard } from '../../actions/pin_board_actions';
 
-const PinIndexItem = (props) => {
+const BoardShowPin = (props) => {
 
-    const { pin, currentUser, savePin, unsavePin } = props
+    const { pin, currentUser, board, pinToBoard, unpinFromBoard } = props
 
     if (!pin) return null;
     if (!currentUser.savedPins) return null;
@@ -17,11 +18,10 @@ const PinIndexItem = (props) => {
                 <img src={pin.imageUrl} className="pin-image" loading="lazy"/>
                 <div className="hidden-pin-layer">
                     <div className="hidden-save-pin">
-                        <SavePinButton
-                            currentUser={currentUser}
-                            unsavePin={unsavePin}
-                            savePin={savePin}
+                        <RemovePinFromBoardButton
                             pin={pin}
+                            board={board}
+                            unpinFromBoard={unpinFromBoard}
                         />
                     </div>
                 </div>
@@ -38,9 +38,9 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        savePin: (pinId) => dispatch(savePin(pinId)),
-        unsavePin: (pinId) => dispatch(unsavePin(pinId))
+        unpinFromBoard: (boardId, pinId) => dispatch(unpinFromBoard(boardId, pinId)),
+        pinToBoard: (boardId, pinId) => dispatch(pinToBoard(boardId, pinId))
     }
 }
 
-export default connect(mSTP, mDTP)(PinIndexItem);
+export default connect(mSTP, mDTP)(BoardShowPin);

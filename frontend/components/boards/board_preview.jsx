@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { receiveFilteredPins } from '../../actions/pin_actions';
 import { fetchPinsOnBoard } from '../../util/pin_board_api_util';
 
-const BoardIndexItem = (props) => {
+const BoardPreview = (props) => {
     
     const { board, openModal } = props;
 
@@ -67,4 +67,4 @@ const BoardIndexItem = (props) => {
     )
 }
 
-export default BoardIndexItem;
+export default BoardPreview;

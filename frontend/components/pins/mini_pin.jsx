@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { pinToBoard, unpinFromBoard } from '../../actions/pin_board_actions';
-import { fetchUser } from '../../actions/user_actions';
 import AddPinToBoardButton from '../buttons/add_pin_to_board_button';
 
 const MiniPin = (props) => {
@@ -9,6 +8,7 @@ const MiniPin = (props) => {
     const { pin, currentUser, board, unpinFromBoard, pinToBoard } = props
 
     if (!pin) return null;
+    if (board.pins.includes(pin.id)) return null;
 
     return (
         <div className="mini-pin-container">

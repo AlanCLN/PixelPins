@@ -11,6 +11,7 @@ import { fetchBoard } from '../../util/board_api_util';
 import { receiveBoard } from '../../actions/board_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchUserSavedPins } from '../../actions/save_pin_actions';
+import BoardShowPinContainer from '../pins/board_show_pin';
 
 const BoardShow = (props) => {
 
@@ -79,9 +80,10 @@ const BoardShow = (props) => {
                     {
                         pins.map((pin, idx) => {
                             return (
-                                <PinIndexItem
+                                <BoardShowPinContainer
                                     key={idx}
                                     pin={pin}
+                                    board={board}
                                 />
                             )
                         }) 
