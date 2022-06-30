@@ -10,8 +10,8 @@ const modalReducer = (state = null, action) => {
             return null;
         case RECEIVE_CURRENT_USER:
             return null;
-        case RECEIVE_BOARD:
-            return null;
+        // case RECEIVE_BOARD:
+        //     return null;
         default:
             return state;
     }

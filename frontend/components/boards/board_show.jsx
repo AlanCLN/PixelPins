@@ -9,6 +9,7 @@ import { fetchUser } from '../../util/user_api_util';
 import { receiveUser } from '../../actions/user_actions';
 import { fetchBoard } from '../../util/board_api_util';
 import { receiveBoard } from '../../actions/board_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const BoardShow = (props) => {
 
@@ -21,7 +22,7 @@ const BoardShow = (props) => {
         fetchData();
     }, [boardParamsId])
 
-    const { board, pins } = props
+    const { board, pins, currentUserId, openModal } = props
 
     const fetchData = async () => {
         let board = await fetchBoard(boardParamsId);
@@ -30,6 +31,11 @@ const BoardShow = (props) => {
         dispatch(receiveUser(user));
         setUser(user)
         props.fetchPinsOnBoard(boardParamsId);
+    }
+
+    const handleAddPin = (e) => {
+        e.preventDefault();
+        openModal('add-pin')
     }
 
     const breakpoints = {
@@ -56,9 +62,11 @@ const BoardShow = (props) => {
                     </div>
                     <Avatar user={user} />
                     <h2>{user.username}</h2>
-                    <div className="add-pin-to-board-button">
-                        <button>Add Pins</button>
-                    </div>
+                    {board.userId === currentUserId &&
+                        <div className="add-pin-to-board-button">
+                            <button onClick={handleAddPin}>Add Pins</button>
+                        </div>
+                    }
                 </div>
                 <div className="board-show-pins">
                     <Masonry
@@ -97,7 +105,8 @@ const mSTP = (state , ownProps) => {
 const mDTP = (dispatch) => {
     return {
         fetchBoard: (boardId) => dispatch(fetchBoard(boardId)),
-        fetchPinsOnBoard: (boardId) => dispatch(fetchPinsOnBoard(boardId))
+        fetchPinsOnBoard: (boardId) => dispatch(fetchPinsOnBoard(boardId)),
+        openModal: (formType) => dispatch(openModal(formType))
     }
 }
 

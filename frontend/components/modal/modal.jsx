@@ -4,6 +4,7 @@ import { closeModal } from "../../actions/modal_actions";
 import LoginFormContainer from '../session/login_form_container';
 import SignupFormContainer from '../session/signup_form_container';
 import BoardFormContainer from '../boards/board_form';
+import AddPinModalContainer from '../boards/baord_add_pin_modal';
 
 const Modal = ({modal, closeModal}) => {
 
@@ -20,6 +21,9 @@ const Modal = ({modal, closeModal}) => {
             break;
         case 'board':
             component = <BoardFormContainer />;
+            break;
+        case 'add-pin':
+            component = <AddPinModalContainer />;
             break;
         default:
             return null;
