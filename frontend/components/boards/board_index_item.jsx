@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { receiveFilteredPins } from '../../actions/pin_actions';
 import { fetchPinsOnBoard } from '../../util/pin_board_api_util';
 

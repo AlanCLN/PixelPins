@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PinIndexItemContainer from './pin_index_item';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css';
@@ -6,28 +6,25 @@ import { connect } from "react-redux";
 import { fetchPins } from "../../actions/pin_actions";
 import { openModal } from '../../actions/modal_actions';
 import { fetchUser } from '../../actions/user_actions';
-
-// import ClipLoader from "react-spinners/ClipLoader";
-// import sleep from '../../util/sleep';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const PinIndex = (props) => {
 
-    // const [loading, setLoading] = useState(true);
+    const counter = useRef(0);
+    const [loading, setLoading] = useState(true);
+
+    const pinLoaded = () => {
+        counter.current += 1;
+        if (counter.current >= pins.length) {
+            setLoading(false);
+        }
+    }
+
     const { pins, fetchPins } = props;
 
-    // const loadingFunction = async () => {
-    //     // setLoading(true);
-    //     await fetchPins();
-    // }
     useEffect(() => {
         fetchPins()
     }, [])
-
-    // useEffect(() => {
-    //     debugger
-    //     // loadingFunction();
-    //     fetchPins();
-    // }, [])
 
     const handleOpenModal = (formType) => {
         return e => {
@@ -48,10 +45,21 @@ const PinIndex = (props) => {
 
     return (
         <div className="pin-index-content">
+            <div 
+                className="loading-page"
+                style={{opacity: loading ? "1" : "0"}}
+            >
+                <ClipLoader
+                    color={"#E60023"}
+                    loading={loading}
+                    size={30}
+                />
+            </div>
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
                 columnClassName="my-masonry-grid-column"
+                onLoad={pinLoaded}
             >
                 {
                     pins.map(pin => {
@@ -72,13 +80,6 @@ const PinIndex = (props) => {
                     </div>
                 </div>
             </div>
-            {/* <div className="loading-page" onLoad={hideLoader}>
-                <ClipLoader
-                    color={"#E60023"}
-                    loading={loading}
-                    size={30}
-                />
-            </div> */}
         </div>
     )
 };
