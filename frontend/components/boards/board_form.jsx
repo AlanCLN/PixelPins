@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
-import { createBoard } from '../../actions/board_actions';
+import { withRouter } from 'react-router-dom';
+import { connect, useDispatch } from "react-redux";
+// import { createBoard } from '../../actions/board_actions';
+import { createBoard } from '../../util/board_api_util';
+import { receiveBoard, receiveBoardErrors } from '../../actions/board_actions';
 
 const BoardForm = (props) => {
 
     const [state, setState] = useState({
         name: ''
     })
+    const dispatch = useDispatch();
 
     const handleNameChange = (e) => {
         setState({...state, name: e.target.value})
@@ -14,7 +18,14 @@ const BoardForm = (props) => {
 
     const handleBoardSubmit = (e) => {
         e.preventDefault();
-        props.createBoard(state);
+
+        createBoard(state).then(board => {
+            dispatch(receiveBoard(board));
+            props.history.push(`/boards/${board.id}`)
+        }, err => {
+            dispatch(receiveBoardErrors(err.responseJSON))
+        })
+
     }
 
     return (
@@ -58,5 +69,5 @@ const mDTP = (dispatch) => {
     }
 }
 
-export default connect(mSTP, mDTP)(BoardForm);
+export default withRouter(connect(mSTP, mDTP)(BoardForm));
 

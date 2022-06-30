@@ -4,6 +4,7 @@ const Avatar = (props) => {
 
     const { user, image } = props;
 
+
     const defaultAvatar = () => {
         return (
             <div className="default-avatar">

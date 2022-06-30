@@ -1,21 +1,36 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchBoard } from '../../actions/board_actions';
+import React, { useEffect, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { fetchPinsOnBoard } from '../../actions/pin_board_actions';
 import { filterBoardPins } from '../../reducers/selectors';
 import Masonry from 'react-masonry-css';
 import PinIndexItem from '../pins/pin_index_item';
+import Avatar from '../user/avatar';
+import { fetchUser } from '../../util/user_api_util';
+import { receiveUser } from '../../actions/user_actions';
+import { fetchBoard } from '../../util/board_api_util';
+import { receiveBoard } from '../../actions/board_actions';
 
 const BoardShow = (props) => {
 
     const boardParamsId = props.match.params.boardId
+    const dispatch = useDispatch();
+
+    const [user, setUser] = useState('');
 
     useEffect(() => {
-        props.fetchBoard(boardParamsId);
-        props.fetchPinsOnBoard(boardParamsId)
+        fetchData();
     }, [boardParamsId])
 
     const { board, pins } = props
+
+    const fetchData = async () => {
+        let board = await fetchBoard(boardParamsId);
+        dispatch(receiveBoard(board));
+        let user = await fetchUser(board.userId);
+        dispatch(receiveUser(user));
+        setUser(user)
+        props.fetchPinsOnBoard(boardParamsId);
+    }
 
     const breakpoints = {
         default: 7,
@@ -27,13 +42,23 @@ const BoardShow = (props) => {
         500: 1
     }
 
-    if (!board || !pins) return null
+    if (!board || !pins || !user) return null
 
     return (
         <div className="board-show-content">
             <div className="board-show-container">
                 <div className="board-show-info">
-
+                    <div className="board-name-container">
+                        <h1>{board.name}</h1>
+                        <span className="edit-board-button">
+                            <img src={window.editButton} alt="" />
+                        </span>
+                    </div>
+                    <Avatar user={user} />
+                    <h2>{user.username}</h2>
+                    <div className="add-pin-to-board-button">
+                        <button>Add Pins</button>
+                    </div>
                 </div>
                 <div className="board-show-pins">
                     <Masonry
@@ -72,7 +97,6 @@ const mSTP = (state , ownProps) => {
 const mDTP = (dispatch) => {
     return {
         fetchBoard: (boardId) => dispatch(fetchBoard(boardId)),
-        fetchUser: (userId) => dispatch(fetchUser(userId)),
         fetchPinsOnBoard: (boardId) => dispatch(fetchPinsOnBoard(boardId))
     }
 }
