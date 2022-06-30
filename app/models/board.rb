@@ -24,12 +24,12 @@ class Board < ApplicationRecord
     through: :pinboard_relationships,
     source: :pin
 
-    def add_pin(pin_id)
-        pinboard_relationships.create(pin_id: pin_id)
+    def add_pin(pin)
+        pinboard_relationships.create(pin_id: pin.id)
     end
 
-    def remove_pin(pin_id)
-        pinboard_relationships.find_by(pin_id: pin_id).destroy
+    def remove_pin(pin)
+        pinboard_relationships.find_by(pin_id: pin.id).destroy
     end
 
     def has_pin?(pin)

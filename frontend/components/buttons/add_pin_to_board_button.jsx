@@ -7,8 +7,8 @@ const AddPinToBoardButton = (props) => {
     const [add, setAdd] = useState(() => {
         return board.pins.includes(pin.id)
     })
-    console.log('pin:', pin)
-    console.log('board', board)
+    console.log('pin:', pinToBoard)
+    console.log('board', unpinFromBoard)
 
     const handleAddPin = (e) => {
         e.preventDefault();

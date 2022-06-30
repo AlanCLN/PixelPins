@@ -13,12 +13,10 @@ class Api::PinBoardsController < ApplicationController
     end
 
     def create
-        @board ||= current_user_boards.find_by(
-            id: params[:board_id]
-        )
-        pin_id = params[:pin_id]
+        new_pin_on_board = PinBoard.new(pin_board_params)
+        @board = Board.find_by(id: params[:pin_board][:board_id])
 
-        if @board && @board.add_pin(pin_id)
+        if @board && new_pin_on_board.save
             render "api/boards/show"
         else
             render json: ["Something went wrong"], status: 422
@@ -26,16 +24,13 @@ class Api::PinBoardsController < ApplicationController
     end
 
     def destroy
-        # @pbr = PinBoard.find_by(
-        #     board_id: params[:board_id],
-        #     pin_id: params[:pin_id]
-        # )
-        @board ||= current_user_boards.find_by(
-            id: params[:board_id]
-        )
-        pin_id = params[:pin_id]
-
-        if @board && @board.remove_pin(pin_id)
+        @board ||= Board.find_by(id: params[:board_id])
+        @pin ||= Pin.find_by(id: params[:pin_id])
+        byebug
+        if !@board || !@pin
+            render json: ["Something went wrong"], status: 422
+        end
+        if @board.remove_pin(@pin)
             render "api/boards/show"
         else
             render json: ["Something went wrong"], status: 422
@@ -43,12 +38,8 @@ class Api::PinBoardsController < ApplicationController
 
     end
 
-    # private
-    # def pin_board_params
-    #     params.require(:pin_board).permit(:board_id, :pin_id)
-    # end
-
-    def current_user_boards
-        current_user.boards
+    private
+    def pin_board_params
+        params.require(:pin_board).permit(:board_id, :pin_id)
     end
 end

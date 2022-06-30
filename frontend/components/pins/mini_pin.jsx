@@ -14,7 +14,7 @@ const MiniPin = (props) => {
         <div className="mini-pin-container">
             <div className="mini-pin-content">
                 <img src={pin.imageUrl}
-                className="mini-pin-image"
+                className="pin-image"
                 loading="lazy"
                 />
                 <div className="mini-hidden-pin-layer">
@@ -41,7 +41,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         unpinFromBoard: (boardId, pinId) => dispatch(unpinFromBoard(boardId, pinId)),
-        pinToBoard: (boardId, pinId) => dispatch(pinToBoard)
+        pinToBoard: (boardId, pinId) => dispatch(pinToBoard(boardId, pinId))
     }
 }
 

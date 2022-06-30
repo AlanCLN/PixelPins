@@ -10,6 +10,7 @@ import { receiveUser } from '../../actions/user_actions';
 import { fetchBoard } from '../../util/board_api_util';
 import { receiveBoard } from '../../actions/board_actions';
 import { openModal } from '../../actions/modal_actions';
+import { fetchUserSavedPins } from '../../actions/save_pin_actions';
 
 const BoardShow = (props) => {
 
@@ -30,6 +31,7 @@ const BoardShow = (props) => {
         let user = await fetchUser(board.userId);
         dispatch(receiveUser(user));
         setUser(user)
+        props.fetchUserSavedPins(user.id);
         props.fetchPinsOnBoard(boardParamsId);
     }
 
@@ -106,6 +108,7 @@ const mDTP = (dispatch) => {
     return {
         fetchBoard: (boardId) => dispatch(fetchBoard(boardId)),
         fetchPinsOnBoard: (boardId) => dispatch(fetchPinsOnBoard(boardId)),
+        fetchUserSavedPins: (userId) => dispatch(fetchUserSavedPins(userId)),
         openModal: (formType) => dispatch(openModal(formType))
     }
 }

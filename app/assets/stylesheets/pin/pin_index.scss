@@ -18,4 +18,10 @@
     height: 100%;
     top: 0;
     left: 0;
+
+    .clip-loader {
+        position: absolute;
+        top: 0;
+        left: 50%;
+    }
 }

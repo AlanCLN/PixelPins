@@ -10,7 +10,9 @@ export const pinToBoard = (boardId, pinId) => {
     return $.ajax({
         method: 'POST',
         url: 'api/pin_boards',
-        data: { board_id: boardId, pin_id: pinId}
+        data: {
+            pin_board: { board_id: boardId, pin_id: pinId}
+        }
     })
 }
 

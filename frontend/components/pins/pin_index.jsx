@@ -51,6 +51,7 @@ const PinIndex = (props) => {
                 style={{display: loading ? "block" : "none"}}
             >
                 <ClipLoader
+                    className="clip-loader"
                     color={"#E60023"}
                     loading={loading}
                     size={30}

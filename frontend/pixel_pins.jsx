@@ -26,6 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<Root store={store}/>, root);
 
   // window.fetchUser = fetchUser;
-  store.dispatch(openModal('add-pin'))
+  // store.dispatch(openModal('add-pin'))
 
 });
