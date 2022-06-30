@@ -3,7 +3,13 @@ class Api::PinBoardsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index
-        render json: ["Working on it"]
+        if params[:board_id]
+            board = Board.find_by(id: params[:board_id])
+            @pins = board.pins
+            render "api/pins/index"
+        else
+            render json: ["Something went wrong"], status: 422
+        end
     end
 
     def create

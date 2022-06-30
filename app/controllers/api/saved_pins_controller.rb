@@ -4,7 +4,7 @@ class Api::SavedPinsController < ApplicationController
     before_action :require_logged_in, only: [:index, :create, :destroy]
 
     def index
-        if (params[:user_id])
+        if params[:user_id]
             user = User.find_by(id: params[:user_id])
             @pins = user.saved_pins
             render "api/pins/index"

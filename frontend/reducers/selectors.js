@@ -36,3 +36,16 @@ export const filterUserSavedPins = (state, userId) => {
     })
     return result;
 }
+
+export const filterBoardPins = (state, boardId) => {
+    let result = [];
+    // pins_array = Object.values(state.entities.pins);
+    if (!state.entities.boards[boardId]?.pins) {
+        return null
+    }
+    const boardPins = state.entities.boards[boardId].pins
+    boardPins.forEach(pinId => {
+        result.push(state.entities.pins[pinId])
+    })
+    return result;
+}
