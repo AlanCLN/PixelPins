@@ -1,0 +1,39 @@
+@import '../variables.scss';
+
+.add-pin-button {
+    width: 70px;
+    min-height: 40px;
+    border-radius: 16px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: $red-button;
+    cursor: pointer;
+}
+
+.add-pin-button:hover {
+    background-color: $red-button-hover;
+}
+
+.unadd-pin-button {
+    width: 70px;
+    min-height: 40px;
+    border-radius: 16px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: black;
+    cursor: pointer;
+}
+
+.unadd-pin-button:hover {
+    background-color: rgb(71, 71, 71);
+}
+
+.mini-hidden-pin-layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

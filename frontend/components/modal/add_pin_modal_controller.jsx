@@ -1,25 +1,17 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
-import LoginFormContainer from '../session/login_form_container';
-import SignupFormContainer from '../session/signup_form_container';
-import BoardFormContainer from '../boards/board_form';
+import AddPinModalContainer from '../boards/baord_show_add_pin_modal';
 
-const Modal = ({modal, closeModal}) => {
+const AddPinModalController = ({modal, closeModal}) => {
 
     if (!modal) {
         return null;
     }
     let component;
     switch (modal) {
-        case 'login':
-            component = <LoginFormContainer />;
-            break;
-        case 'signup':
-            component = <SignupFormContainer />;
-            break;
-        case 'board':
-            component = <BoardFormContainer />;
+        case 'add-pin':
+            component = <AddPinModalContainer />;
             break;
         default:
             return null;
@@ -45,4 +37,4 @@ const mDTP = (dispatch) => {
     }
 }
 
-export default connect(mSTP, mDTP)(Modal);
+export default connect(mSTP, mDTP)(AddPinModalController);

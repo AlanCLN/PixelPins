@@ -12,6 +12,7 @@ import PinCreateFormContainer from './pins/pin_create_form_container';
 import PinEditFormContainer from './pins/pin_edit_form_container';
 import BoardShowContainer from './boards/board_show';
 import SplashPage from "./splash/splash";
+import AddPinToBoardModal from './modal/add_pin_modal_controller';
 
 const App = () => (
   <div>
@@ -23,6 +24,7 @@ const App = () => (
       <ProtectedRoute path="/users/:userId/created" component={UserShowCreatedContainer} />
       <ProtectedRoute path="/users/:userId/saved" component={UserShowSavedContainer} />
       <ProtectedRoute path="/boards/:boardId" component={BoardShowContainer}/>
+      <ProtectedRoute path="/boards/:boardId" component={AddPinToBoardModal} />
       <ProtectedRoute path="/pins/:pinId/edit" component={PinEditFormContainer} />
       <ProtectedRoute exact path="/pins/:pinId" component={PinShowContainer} />
       <ProtectedRoute exact path="/builder" component={PinCreateFormContainer} />

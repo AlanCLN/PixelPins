@@ -16,7 +16,7 @@ const PinIndex = (props) => {
     const pinLoaded = async () => {
         counter.current += 1;
         if (counter.current >= pins.length) {
-            await sleep(800)
+            // await sleep(800)
             setLoading(false);
         }
     }
@@ -48,7 +48,7 @@ const PinIndex = (props) => {
         <div className="pin-index-content">
             <div 
                 className="loading-page"
-                style={{opacity: loading ? "1" : "0"}}
+                style={{display: loading ? "block" : "none"}}
             >
                 <ClipLoader
                     color={"#E60023"}

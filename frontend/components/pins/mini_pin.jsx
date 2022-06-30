@@ -1,30 +1,33 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { pinToBoard, unpinFromBoard } from '../../actions/pin_board_actions';
 import { fetchUser } from '../../actions/user_actions';
-import SavePinButton from '../buttons/save_pin_button';
-import { savePin, unsavePin } from '../../actions/save_pin_actions';
+import AddPinToBoardButton from '../buttons/add_pin_to_board_button';
 
 const MiniPin = (props) => {
 
-    const { pin, currentUser, savePin, unsavePin } = props
+    const { pin, currentUser, board, unpinFromBoard, pinToBoard } = props
 
     if (!pin) return null;
-    if (!currentUser.savedPins) return null;
 
     return (
-        <div className="pin-container">
-            <Link to={`/pins/${pin.id}`} className="pin-show-link">
+        <div className="mini-pin-container">
+            <div className="mini-pin-content">
                 <img src={pin.imageUrl}
-                    className="pin-image"
-                    loading="lazy"
-                    />
-                <div className="hidden-pin-layer">
-                    <div className="hidden-save-pin">
-
+                className="mini-pin-image"
+                loading="lazy"
+                />
+                <div className="mini-hidden-pin-layer">
+                    <div className="mini-hidden-add-pin">
+                        <AddPinToBoardButton 
+                            pin={pin}
+                            board={board}
+                            pinToBoard={pinToBoard}
+                            unpinFromBoard={unpinFromBoard}
+                        />
                     </div>
                 </div>
-            </Link>
+            </div>
         </div>
     )
 }
@@ -37,8 +40,8 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        savePin: (pinId) => dispatch(savePin(pinId)),
-        unsavePin: (pinId) => dispatch(unsavePin(pinId))
+        unpinFromBoard: (boardId, pinId) => dispatch(unpinFromBoard(boardId, pinId)),
+        pinToBoard: (boardId, pinId) => dispatch(pinToBoard)
     }
 }
 

@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { filterUserSavedPins } from '../../reducers/selectors';
 import { fetchUserSavedPins } from '../../actions/save_pin_actions';
 import Masonry from 'react-masonry-css';
-import PinIndexItemContainer from '../pins/pin_index_item';
+import MiniPinContainer from '../pins/mini_pin';
+import { fetchBoard } from '../../actions/board_actions';
 
 const AddPinModal = (props) => {
 
-    const { pins } = props
+    const boardParamsId = props.match.params.boardId
 
-    if (!pins) return null
+    const { pins, board, fetchBoard } = props
+
+    useEffect(() => {
+        fetchBoard(boardParamsId);
+    })
+
+    if (!pins || !board) return null
 
     const breakpoints = {
-        default: 2,
+        default: 3,
     }
 
     return (
@@ -30,8 +38,9 @@ const AddPinModal = (props) => {
                     {
                         pins.map((pin, idx) => {
                             return (
-                                <PinIndexItemContainer
+                                <MiniPinContainer
                                     pin={pin}
+                                    board={board}
                                     key={idx}
                                 />
                             )
@@ -47,14 +56,16 @@ const AddPinModal = (props) => {
 const mSTP = (state, ownProps) => {
     const currentUserId = state.session.id
     return {
-        pins: filterUserSavedPins(state, currentUserId)
+        pins: filterUserSavedPins(state, currentUserId),
+        board: state.entities.boards[ownProps.match.params.boardId]
     }
 }
 
 const mDTP = (dispatch) => {
     return {
-        fetchUserSavedPins: (userId) => dispatch(fetchUserSavedPins(userId))
+        fetchUserSavedPins: (userId) => dispatch(fetchUserSavedPins(userId)),
+        fetchBoard: (boardId) => dispatch(fetchBoard)
     }
 }
 
-export default connect(mSTP, mDTP)(AddPinModal);
+export default withRouter(connect(mSTP, mDTP)(AddPinModal));

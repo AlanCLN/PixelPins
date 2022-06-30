@@ -1,0 +1,39 @@
+@import '../variables.scss';
+
+.mini-pin-container {
+    width: 150px;
+    position: relative;
+    box-sizing: border-box;
+    // display: block;
+    margin: 15px;
+}
+
+.mini-pin-content {
+    box-sizing: border-box;
+    z-index: 10;
+    display: block;
+    width: 100%;
+    height: auto;
+
+    img.pin-image {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-sizing: border-box;
+    }
+}
+
+.mini-hidden-pin-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 16px;
+    opacity: 0;
+}
+
+.mini-hidden-pin-layer:hover {
+    opacity: 1;
+}
