@@ -8,6 +8,9 @@ import { openModal } from '../../actions/modal_actions';
 import { fetchUser } from '../../actions/user_actions';
 import ClipLoader from "react-spinners/ClipLoader";
 import sleep from '../../util/sleep';
+
+
+
 const PinIndex = (props) => {
 
     const counter = useRef(0);
@@ -16,6 +19,7 @@ const PinIndex = (props) => {
     const pinLoaded = async () => {
         counter.current += 1;
         if (counter.current >= pins.length) {
+            await sleep(700)
             setLoading(false);
         }
     }

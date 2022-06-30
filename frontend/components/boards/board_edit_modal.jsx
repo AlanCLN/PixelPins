@@ -4,7 +4,6 @@ import { connect, useDispatch } from "react-redux";
 // import { createBoard } from '../../actions/board_actions';
 import { createBoard } from '../../util/board_api_util';
 import { receiveBoard, receiveBoardErrors } from '../../actions/board_actions';
-import { closeModal } from '../../actions/modal_actions';
 
 const BoardForm = (props) => {
 
@@ -22,7 +21,6 @@ const BoardForm = (props) => {
 
         createBoard(state).then(board => {
             dispatch(receiveBoard(board));
-            props.closeModal();
             props.history.push(`/boards/${board.id}`)
         }, err => {
             dispatch(receiveBoardErrors(err.responseJSON))
@@ -67,10 +65,9 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        createBoard: board => dispatch(createBoard(board)),
-        closeModal: () => dispatch(closeModal())
+        updateBoard: board => dispatch(createBoard(board)),
+        deleteBoard: boardId => dispatch(deleteBoard(boardId))
     }
 }
 
 export default withRouter(connect(mSTP, mDTP)(BoardForm));
-

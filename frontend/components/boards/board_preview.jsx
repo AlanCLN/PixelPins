@@ -63,6 +63,10 @@ const BoardPreview = (props) => {
                     <img src={setImage3()} />
                 </div>
             </div>
+            <div className="board-preview-info-container">
+                <p className="board-preview-name">{board.name}</p>
+                <p className="board-preview-num-pins">{pins.length} Pins</p>
+            </div>
         </Link>
     )
 }

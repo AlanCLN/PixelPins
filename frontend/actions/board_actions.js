@@ -60,7 +60,7 @@ export const updateBoard = (board) => {
     return (dispatch) => {
         return BoardAPIUtil.updateBoard(board).then(board =>
             dispatch(receiveBoard(board)), err =>
-            dispatch(receiveBoardErrors(err,responseJSON))    
+            dispatch(receiveBoardErrors(err.responseJSON))    
         )
     }
 }
