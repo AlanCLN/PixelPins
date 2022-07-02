@@ -11,6 +11,7 @@ const fetchEditForm = (props) => {
 
     const { 
         pin,
+        pinId,
         formType,
         formButton,
         updatePin,
@@ -26,6 +27,7 @@ const fetchEditForm = (props) => {
     return (
         <PinEditForm 
             pin={pin}
+            pinId={pinId}
             formType={formType}
             formButton={formButton}
             updatePin={updatePin}
@@ -39,12 +41,14 @@ const fetchEditForm = (props) => {
 }
 
 const mSTP = (state, ownProps) => {
+    const pinId = ownProps.match.params.pinId
     return {
         formType: 'Update Pin',
         formButton: 'Update',
         errors: state.errors.pins,
         pin: state.entities.pins[ownProps.match.params.pinId],
-        currentUserId: state.session.id
+        currentUserId: state.session.id,
+        pinId: pinId
     }
 }
 
@@ -54,7 +58,7 @@ const mDTP = (dispatch, ownProps) => {
         updatePin: pin => dispatch(updatePin(pin)),
         fetchPin: pinId => dispatch(fetchPin(pinId)),
         finishUpdate: () => ownProps.history.push(`/pins/${pinId}`),
-        deletePin: () => dispatch(deletePin(pinId)),
+        deletePin: (pinId) => dispatch(deletePin(pinId)),
         finishDelete: () => ownProps.history.push("/")
     }
 }

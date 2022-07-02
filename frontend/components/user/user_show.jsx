@@ -45,9 +45,9 @@ const UserShow = (props) => {
                     <span className="username-handle">{`@${user.username}`}</span>
                 </div>
                 <div className="follows-container">
-                    <span>1 following</span>
+                    <span>0 following</span>
                     <div className="follow-divider"></div>
-                    <span>1 followers</span>
+                    <span>0 followers</span>
                 </div>
                 <div className="follow-button-container">
                     {/* {followButton()} */}

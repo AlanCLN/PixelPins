@@ -5,7 +5,7 @@ import { connect, useDispatch } from "react-redux";
 import { createBoard } from '../../util/board_api_util';
 import { receiveBoard, receiveBoardErrors } from '../../actions/board_actions';
 
-const BoardForm = (props) => {
+const BoardEditForm = (props) => {
 
     const [state, setState] = useState({
         name: ''
@@ -65,9 +65,9 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        updateBoard: board => dispatch(createBoard(board)),
+        updateBoard: board => dispatch(updateBoard(board)),
         deleteBoard: boardId => dispatch(deleteBoard(boardId))
     }
 }
 
-export default withRouter(connect(mSTP, mDTP)(BoardForm));
+export default withRouter(connect(mSTP, mDTP)(BoardEditForm));

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import AddPinModalContainer from '../boards/baord_show_add_pin_modal';
 
-const AddPinModalController = ({modal, closeModal}) => {
+const BoardModalController = ({modal, closeModal}) => {
 
     if (!modal) {
         return null;
@@ -12,6 +12,9 @@ const AddPinModalController = ({modal, closeModal}) => {
     switch (modal) {
         case 'add-pin':
             component = <AddPinModalContainer />;
+            break;
+        case 'edit-board':
+    
             break;
         default:
             return null;
@@ -37,4 +40,4 @@ const mDTP = (dispatch) => {
     }
 }
 
-export default connect(mSTP, mDTP)(AddPinModalController);
+export default connect(mSTP, mDTP)(BoardModalController);

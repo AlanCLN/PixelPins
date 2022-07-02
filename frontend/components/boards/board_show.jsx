@@ -41,6 +41,11 @@ const BoardShow = (props) => {
         openModal('add-pin')
     }
 
+    const handleEditBoard = (e) => {
+        e.preventDefault();
+        openModal('edit-board')
+    }
+
     const breakpoints = {
         default: 7,
         1850: 6,
@@ -59,7 +64,7 @@ const BoardShow = (props) => {
                 <div className="board-show-info">
                     <div className="board-name-container">
                         <h1>{board.name}</h1>
-                        <span className="edit-board-button">
+                        <span className="edit-board-button" onClick={handleEditBoard}>
                             <img src={window.editButton} alt="" />
                         </span>
                     </div>

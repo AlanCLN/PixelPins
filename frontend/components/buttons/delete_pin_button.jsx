@@ -2,10 +2,12 @@ import React from 'react';
 
 const DeletePinButton = (props) => {
 
+    const { pinId, deletePin, finishDelete } = props;
+
     const handleDeletePin = (e) => {
         e.preventDefault();
-        props.deletePin()
-        .then(props.finishDelete());
+        deletePin(pinId)
+        .then(finishDelete());
     }
 
     return (

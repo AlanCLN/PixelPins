@@ -1,6 +1,6 @@
 export const filterUserPins = (state, userId) => {
     let result = [];
-    // pins_array = Object.values(state.entities.pins);
+
     if (!state.entities.users[userId]?.pins) {
         return null
     }
@@ -26,7 +26,7 @@ export const filterUserBoards = (state, userId) => {
 
 export const filterUserSavedPins = (state, userId) => {
     let result = [];
-    // pins_array = Object.values(state.entities.pins);
+
     if (!state.entities.users[userId]?.savedPins) {
         return null
     }
@@ -39,7 +39,7 @@ export const filterUserSavedPins = (state, userId) => {
 
 export const filterBoardPins = (state, boardId) => {
     let result = [];
-    // pins_array = Object.values(state.entities.pins);
+
     if (!state.entities.boards[boardId]?.pins) {
         return null
     }

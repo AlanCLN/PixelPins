@@ -22,6 +22,9 @@ const PinShow = (props) => {
     const { pin, currentUser, unsavePin, savePin } = props
     if (!pin) return null;
     if (!currentUser.savedPins) return null;
+
+    console.log(pin)
+    console.log(currentUser)
     return (
         <div className="pin-show-content">
             <div 
@@ -48,7 +51,7 @@ const PinShow = (props) => {
                         <div className="pin-show-description">
                             {pin.description}
                         </div>
-                        {props.currentUserId === pin.uploaderId &&
+                        {currentUser.id === pin.uploaderId &&
                             <div className="edit-delete-button-container">
                                 <div className="show-edit-button-container">
                                     <EditPinButton pinId={pin.id}/>

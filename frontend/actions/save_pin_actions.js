@@ -12,7 +12,7 @@ export const savePin = (pinId) => {
 export const unsavePin = (pinId) => {
     return (dispatch) => {
         return SavePinAPIUtil.unsavePin(pinId)
-        .then(user => dispatch(receiveUser))
+        .then(user => dispatch(receiveUser(user)))
     }
 }
 

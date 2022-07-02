@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import PinForm from "./pin_form";
+import { createPin } from "../../actions/pin_actions";
 
 const mSTP = (state) => {
     return {

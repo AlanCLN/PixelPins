@@ -1,14 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PinIndexItem from '../pins/pin_index_item';
 import { connect } from "react-redux";
 import { fetchUserPins } from "../../actions/pin_actions";
 import { fetchUser } from "../../actions/user_actions";
 import { filterUserPins } from '../../reducers/selectors';
 import Masonry from 'react-masonry-css';
+import ClipLoader from "react-spinners/ClipLoader";
+import sleep from '../../util/sleep';
 
 const UserShowCreated = (props) => {
 
     const userParamsId = props.match.params.userId
+
+    // const counter = useRef(0);
+    // const [loading, setLoading] = useState(true);
+
+    // const pinLoaded = async () => {
+    //     counter.current += 1;
+    //     if (counter.current >= pins.length) {
+    //         setLoading(!loading);
+    //     }
+    // }
 
     useEffect(() => {
         props.fetchUserPins();
@@ -27,12 +39,25 @@ const UserShowCreated = (props) => {
     }
 
     if (!user || !pins) return null
+
     return (
         <div className="created-content">
+            {/* <div 
+                className="user-show-loading-page"
+                style={{display: loading ? "block" : "none"}}
+            >
+                <ClipLoader
+                    className="clip-loader"
+                    color={"#E60023"}
+                    loading={loading}
+                    size={30}
+                />
+            </div> */}
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
                 columnClassName="user-show-my-masonry-grid_column"
+                // onLoad={pinLoaded}
             >
                 {
                     pins.map((pin, idx) => {

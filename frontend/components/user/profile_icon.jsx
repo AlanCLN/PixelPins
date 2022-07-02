@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 const ProfileIcon = (props) => {
 
     const { currentUser, image } = props
-    
 
+    if (!currentUser) return null
+    
     const defaultPic = () => {
         return (
             <div className="avatar-container">

@@ -23,6 +23,7 @@ const PinEditForm = (props) => {
         e.preventDefault();
         window.history.back();
     }
+    const { currentUserId, pin, pinId, deletePin, finishDelete } = props;
 
     return (
         <div className="pin-form-content">
@@ -71,11 +72,12 @@ const PinEditForm = (props) => {
                                 >{props.formButton}
                             </button>
                         </div>
-                        {props.currentUserId === props.pin.uploader_id &&
+                        {currentUserId === pin.uploaderId &&
                         <div className="edit-form-delete-button-container">
-                            <DeletePinButton 
-                                deletePin={props.deletePin}
-                                finishDelete={props.finishDelete}
+                            <DeletePinButton
+                                pinId={pinId}
+                                deletePin={deletePin}
+                                finishDelete={finishDelete}
                             />
                         </div>
                         }
