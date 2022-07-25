@@ -2,29 +2,43 @@ import React, { useEffect } from 'react';
 import DeletePinButton from '../buttons/delete_pin_button';
 import EditPinButton from '../buttons/edit_pin_button';
 import SavePinButton from '../buttons/save_pin_button';
-import { connect } from "react-redux";
-import { fetchPin } from '../../actions/pin_actions';
+import { connect, useDispatch } from "react-redux";
+import { receivePin } from '../../actions/pin_actions';
+import { fetchPin } from '../../util/pin_api_util';
 import { savePin, unsavePin } from '../../actions/save_pin_actions';
+import { fetchUser } from '../../util/user_api_util';
+import { receiveUser } from '../../actions/user_actions';
+import UserFollowIndexItem from '../follows/user_follow_index_item';
 
 const PinShow = (props) => {
 
     const pinParamsId = props.match.params.pinId
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        props.fetchPin(props.match.params.pinId)
+        fetchData();
     }, [pinParamsId])
+
+    const fetchData = async () => {
+        let pin = await fetchPin(pinParamsId);
+        dispatch(receivePin(pin));
+        let user = await fetchUser(pin.uploaderId);
+        dispatch(receiveUser(user));
+    }
 
     const handleGoBack = (e) => {
         e.preventDefault();
         window.history.back();
     }
 
-    const { pin, currentUser, unsavePin, savePin } = props
+    const { pin, currentUser, pinCreator, unsavePin, savePin } = props
     if (!pin) return null;
     if (!currentUser.savedPins) return null;
+    if (!pinCreator) return null;
 
-    console.log(pin)
-    console.log(currentUser)
+    console.log(pinCreator)
+    
     return (
         <div className="pin-show-content">
             <div 
@@ -51,6 +65,12 @@ const PinShow = (props) => {
                         <div className="pin-show-description">
                             {pin.description}
                         </div>
+                        <div className="pin-show-followee-info-container">
+                            <UserFollowIndexItem
+                                user={pinCreator}
+                                currentUser={currentUser}
+                            />
+                        </div>
                         {currentUser.id === pin.uploaderId &&
                             <div className="edit-delete-button-container">
                                 <div className="show-edit-button-container">
@@ -66,16 +86,16 @@ const PinShow = (props) => {
 };
 
 const mSTP = (state, ownProps) => {
+    const pinUploaderId = state.entities.pins[ownProps.match.params.pinId]?.uploaderId
     return {
         pin: state.entities.pins[ownProps.match.params.pinId],
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id],
+        pinCreator: state.entities.users[pinUploaderId]
     }
 }
 
 const mDTP = (dispatch) => {
     return {
-        fetchPin: (pinId) => dispatch(fetchPin(pinId)),
-        fetchUser: (userId) => dispatch(fetchUser(userId)),
         savePin: (pinId) => dispatch(savePin(pinId)),
         unsavePin: (pinId) => dispatch(unsavePin(pinId))
     }

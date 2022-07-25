@@ -6,28 +6,28 @@ export const REMOVE_PIN = 'REMOVE_PIN';
 export const RECEIVE_PIN_ERRORS = 'RECEIVE_PIN_ERRORS';
 export const RECEIVE_FILTERED_PINS = 'RECEIVE_FILTERED_PINS';
 
-const receivePins = (pins) => {
+export const receivePins = (pins) => {
     return {
         type: RECEIVE_PINS,
         pins
     }
 }
 
-const receivePin = (pin) => {
+export const receivePin = (pin) => {
     return {
         type: RECEIVE_PIN,
         pin
     }
 }
 
-const removePin = (pinId) => {
+export const removePin = (pinId) => {
     return {
         type: RECEIVE_PINS,
         pinId
     }
 }
 
-const receivePinErrors = (errors) => {
+export const receivePinErrors = (errors) => {
     return {
         type: RECEIVE_PIN_ERRORS,
         errors

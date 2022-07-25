@@ -68,7 +68,9 @@ const BoardShow = (props) => {
                             <img src={window.editButton} alt="" />
                         </span>
                     </div>
-                    <Avatar user={user} />
+                    <div className="board-show-avatar-container">
+                        <Avatar user={user} />
+                    </div>
                     <h2>{user.username}</h2>
                     {board.userId === currentUserId &&
                         <div className="add-pin-to-board-button">

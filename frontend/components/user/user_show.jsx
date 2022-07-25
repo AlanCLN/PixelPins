@@ -23,18 +23,12 @@ const UserShow = (props) => {
         })
     }, [userParamsId]);
 
-    // const followButton = () => {
-    //     return (props.user.id !== props.currentUser.id)
-    //     ? <button className="follow-button">Follow</button>
-    //     : null
-    // }
-
-    // const handleOpenModal = (formType) => {
-    //     return e => {
-    //         e.preventDefault();
-    //         props.openModal(formType);
-    //     }
-    // }
+    const handleOpenModal = (formType) => {
+        return e => {
+            e.preventDefault();
+            props.openModal(formType);
+        }
+    }
     
     const { user, currentUser, boards } = props
 
@@ -42,17 +36,23 @@ const UserShow = (props) => {
     return (
         <div className="user-show-page">
             <div className="user-show-info">
-                <Avatar
-                    user={user}
-                />
+                <div className="user-show-avatar-container">
+                    <Avatar
+                        user={user}
+                    />
+                </div>
                 <div className="username">
                     <h1 className="username-header">{user.username}</h1>
                     <span className="username-handle">{`@${user.username}`}</span>
                 </div>
                 <div className="follows-container">
-                    <span>{user.followings.length} following</span>
+                    <span
+                        onClick={handleOpenModal('followings')}
+                    >{user.followings.length} following</span>
                     <div className="follow-divider"></div>
-                    <span>{user.followers.length} followers</span>
+                    <span
+                        onClick={handleOpenModal('followers')}
+                    >{user.followers.length} followers</span>
                 </div>
                 <div className="user-show-follow-button-container">
                     { currentUser.id !== user.id &&
