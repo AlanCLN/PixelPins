@@ -13,7 +13,6 @@ class Api::SavedPinsController < ApplicationController
         end
     end
 
-
     def create
         @pin = Pin.find_by(id: params[:pin_id])
         @user = current_user

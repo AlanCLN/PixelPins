@@ -1,5 +1,6 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
+import { RECEIVE_FOLLOWER_AND_FOLLOWEE_USERS } from "../actions/follow_actions";
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -11,6 +12,11 @@ const usersReducer = (state = {}, action) => {
             return nextState;
         case RECEIVE_USER:
             nextState[action.user.id] = action.user;
+            return nextState;
+        case RECEIVE_FOLLOWER_AND_FOLLOWEE_USERS:
+            action.users.forEach(user => {
+                nextState[user.id] = user
+            })
             return nextState;
         default:
             return state;

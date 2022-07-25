@@ -17,3 +17,15 @@ saved_pins_array = []
     saved_pins_array << pin.id
 end
 json.saved_pins saved_pins_array
+
+followers_array = []
+@user.followers.each do |follower|
+    followers_array << follower.id
+end
+json.followers followers_array
+
+followings_array = []
+@user.followings.each do |following|
+    followings_array << following.id
+end
+json.followings followings_array

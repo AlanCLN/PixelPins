@@ -1,4 +1,4 @@
-export const filterUserPins = (state, userId) => {
+export const filterUserPins = (state) => {
     let result = [];
 
     if (!state.entities.users[userId]?.pins) {

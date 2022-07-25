@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 const SavePinButton = (props) => {
 
@@ -34,7 +35,7 @@ const SavePinButton = (props) => {
             <button
                 className="unsave-pin-button"
                 onClick={handleUnSavePin}
-            >unSave</button>
+            >Saved</button>
         )
     }
 

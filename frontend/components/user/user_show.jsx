@@ -7,10 +7,15 @@ import { openModal } from '../../actions/modal_actions';
 import { fetchUserBoards } from '../../actions/board_actions';
 import { filterUserBoards } from '../../reducers/selectors';
 import BoardPreview from '../boards/board_preview';
+import FollowButtonContainer from '../buttons/follow_button';
 
 const UserShow = (props) => {
 
     const userParamsId = props.match.params.userId
+
+    useEffect(() => {
+        props.fetchUser(props.currentUser.id)
+    }, [])
 
     useEffect(() => {
         props.fetchUser(userParamsId).then(() => {
@@ -31,9 +36,9 @@ const UserShow = (props) => {
     //     }
     // }
     
-    const { user, boards } = props
+    const { user, currentUser, boards } = props
 
-    if (!user || !boards) return null;
+    if (!user || !boards || !currentUser.followings) return null;
     return (
         <div className="user-show-page">
             <div className="user-show-info">
@@ -45,12 +50,17 @@ const UserShow = (props) => {
                     <span className="username-handle">{`@${user.username}`}</span>
                 </div>
                 <div className="follows-container">
-                    <span>0 following</span>
+                    <span>{user.followings.length} following</span>
                     <div className="follow-divider"></div>
-                    <span>0 followers</span>
+                    <span>{user.followers.length} followers</span>
                 </div>
-                <div className="follow-button-container">
-                    {/* {followButton()} */}
+                <div className="user-show-follow-button-container">
+                    { currentUser.id !== user.id &&
+                    <FollowButtonContainer
+                        otherUser={user}
+                        currentUser={currentUser}
+                    />
+                    }
                 </div>
             </div>
             <div className="board-index-content">
@@ -96,6 +106,7 @@ const mSTP = (state, ownProps) => {
     const userId = ownProps.match.params.userId
     return {
         user: state.entities.users[userId],
+        currentUser: state.entities.users[state.session.id],
         boards: filterUserBoards(state, userId)
     }
 }

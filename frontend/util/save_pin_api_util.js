@@ -18,6 +18,5 @@ export const fetchUserSavedPins = (userId) => {
         method: 'GET',
         url: 'api/saved_pins',
         data: { user_id: userId }
-
     })
 }

@@ -27,7 +27,6 @@ const BoardForm = (props) => {
         }, err => {
             dispatch(receiveBoardErrors(err.responseJSON))
         })
-
     }
 
     return (

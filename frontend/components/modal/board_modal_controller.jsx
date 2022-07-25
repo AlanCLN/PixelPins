@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
-import AddPinModalContainer from '../boards/baord_show_add_pin_modal';
+import AddPinModalContainer from '../boards/board_show_add_pin_modal';
 
 const BoardModalController = ({modal, closeModal}) => {
 

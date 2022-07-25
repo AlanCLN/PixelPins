@@ -54,7 +54,7 @@ class User < ApplicationRecord
     foreign_key: :followed_id,
     dependent: :destroy
 
-    has_many :following,
+    has_many :followings,
     through: :active_friendships,
     source: :followed
 
