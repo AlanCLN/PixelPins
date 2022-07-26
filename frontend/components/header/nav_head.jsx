@@ -40,7 +40,7 @@ const NavHead = (props) => {
                             <a href="https://github.com/alancln">Github</a>
                         </div>
                         <div className="link-container">
-                            <a href="#">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/alan-cln/">LinkedIn</a>
                         </div>
                         <div className="link-container">
                             <a href="#">Portfolio</a>
@@ -88,7 +88,7 @@ const NavHead = (props) => {
                         </a>
                     </div>
                     <div className="linkedin link-container icon-container">
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/alan-cln/">
                             <img src={window.linkedinIcon} />
                         </a>
                     </div>

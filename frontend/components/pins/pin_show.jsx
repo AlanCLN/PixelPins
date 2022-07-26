@@ -36,8 +36,6 @@ const PinShow = (props) => {
     if (!pin) return null;
     if (!currentUser.savedPins) return null;
     if (!pinCreator) return null;
-
-    console.log(pinCreator)
     
     return (
         <div className="pin-show-content">
@@ -52,6 +50,11 @@ const PinShow = (props) => {
                     </div>
                     <div className="pin-show-info-container">
                         <div className="pin-show-buttons-container">
+                            {currentUser.id === pin.uploaderId &&
+                            <div className="show-edit-button-container">
+                                <EditPinButton pinId={pin.id}/>
+                            </div>
+                            }
                             <SavePinButton 
                                 currentUser={currentUser}
                                 unsavePin={unsavePin}
@@ -66,18 +69,13 @@ const PinShow = (props) => {
                             {pin.description}
                         </div>
                         <div className="pin-show-followee-info-container">
+                            {pinCreator.id !== currentUser.id &&
                             <UserFollowIndexItem
                                 user={pinCreator}
                                 currentUser={currentUser}
                             />
+                            }
                         </div>
-                        {currentUser.id === pin.uploaderId &&
-                            <div className="edit-delete-button-container">
-                                <div className="show-edit-button-container">
-                                    <EditPinButton pinId={pin.id}/>
-                                </div>
-                            </div>
-                        }
                     </div>
                 </div>
             </div>

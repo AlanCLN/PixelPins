@@ -7,6 +7,7 @@
     // display: block;
     margin: 15px;
     margin-bottom: 30px;
+
 }
 
 .pin-show-link {
@@ -30,7 +31,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 2px);
     box-sizing: border-box;
     border-radius: 16px;
     opacity: 0;
@@ -38,5 +39,32 @@
 
 .hidden-pin-layer:hover {
     opacity: 1;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.pin-index-edit-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    background: $gray-button;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+}
+
+.pin-index-edit-button-content {
+    width: 70%;
+    height: 70%;
+}
+
+
+.pin-index-edit-button-container:hover {
+    background: $gray-button-hover;
 }
 

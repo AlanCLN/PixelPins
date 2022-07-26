@@ -13,3 +13,23 @@ export const unfollowUser = (followee_id) => {
         data: { followee_id }
     })
 }
+
+export const fetchUserFollowers = (userId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/follows`,
+        data: {
+            followee_id: userId
+        }
+    })
+}
+
+export const fetchUserFollowings = (userId) => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/follows`,
+        data: {
+            follower_id: userId
+        }
+    })
+}

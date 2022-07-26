@@ -67,9 +67,9 @@
 
 .pin-show-info-container {
     display: flex;
+    justify-content: center;
     position: relative;
     flex-direction: column;
-    padding-top: 30px;
     box-sizing: border-box;
     margin: 0 30px;
 
@@ -98,4 +98,10 @@
 
 .pin-show-followee-info-container {
     margin-top: 20px;
+}
+
+.show-edit-button-container {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
 }

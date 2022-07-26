@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
+import FollowersContainer from './followers_container';
+import FollowingsContainer from './followings_container';
 
-const FollowModalController = ({modal, closeModal}) => {
+const FollowModalController = ({modal, closeModal, userId}) => {
 
     if (!modal) {
         return null;
@@ -10,10 +12,10 @@ const FollowModalController = ({modal, closeModal}) => {
     let component;
     switch (modal) {
         case 'followers':
-            component = <AddPinModalContainer />;
+            component = <FollowersContainer userId={userId}/>
             break;
         case 'followings':
-            
+            component = <FollowingsContainer userId={userId}/>
             break;
         default:
             return null;

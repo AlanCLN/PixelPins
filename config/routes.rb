@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
     resources :saved_pins, only: [:index, :create, :destroy]
     resources :pin_boards, only: [:index, :create, :destroy]
-    resources :follows, only: [:create, :destroy]
+    resources :follows, only: [:index, :create, :destroy]
   end
 end

@@ -1,26 +1,32 @@
 import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Avatar from './avatar';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
-import { openModal } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchUserBoards } from '../../actions/board_actions';
 import { filterUserBoards } from '../../reducers/selectors';
 import BoardPreview from '../boards/board_preview';
 import FollowButtonContainer from '../buttons/follow_button';
+import FollowModalControllerContainer from '../follows/follow_modal_controller';
+import { fetchUserFollowers, fetchUserFollowings } from '../../actions/follow_actions';
 
 const UserShow = (props) => {
 
     const userParamsId = props.match.params.userId
+    const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect(() => {  // fetch currentUser
         props.fetchUser(props.currentUser.id)
     }, [])
 
-    useEffect(() => {
+    useEffect(() => { // fetch user for that profile
+        dispatch(closeModal());
         props.fetchUser(userParamsId).then(() => {
             props.fetchUserBoards()
         })
+        props.fetchUserFollowers();
+        props.fetchUserFollowings();
     }, [userParamsId]);
 
     const handleOpenModal = (formType) => {
@@ -54,6 +60,7 @@ const UserShow = (props) => {
                         onClick={handleOpenModal('followers')}
                     >{user.followers.length} followers</span>
                 </div>
+                <FollowModalControllerContainer userId={user.id}/>
                 <div className="user-show-follow-button-container">
                     { currentUser.id !== user.id &&
                     <FollowButtonContainer
@@ -116,7 +123,10 @@ const mDTP = (dispatch, ownProps) => {
     return {
         fetchUser: (userId) => dispatch(fetchUser(userId)),
         fetchUserBoards: () => dispatch(fetchUserBoards(userId)),
-        openModal: (formType) => dispatch(openModal(formType))
+        openModal: (formType) => dispatch(openModal(formType)),
+        fetchUserFollowers: () => dispatch(fetchUserFollowers(userId)),
+        fetchUserFollowings: () => dispatch(fetchUserFollowings(userId))
+
     }
 }
 

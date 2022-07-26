@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SavePinButton from '../buttons/save_pin_button';
 import { savePin, unsavePin } from '../../actions/save_pin_actions';
+import EditPinButton from '../buttons/edit_pin_button';
 
 const PinIndexItem = (props) => {
 
@@ -13,7 +14,7 @@ const PinIndexItem = (props) => {
 
     return (
         <div className="pin-container">
-            <Link to={`/pins/${pin.id}`} className="pin-show-link">
+            <Link as="div" to={`/pins/${pin.id}`} className="pin-show-link">
                 <img src={pin.imageUrl} className="pin-image" loading="lazy"/>
                 <div className="hidden-pin-layer">
                     <div className="hidden-save-pin">
@@ -26,6 +27,13 @@ const PinIndexItem = (props) => {
                     </div>
                 </div>
             </Link>
+            {currentUser.id === pin.uploaderId &&
+            <div className="pin-index-edit-button-container">
+                <div className="pin-index-edit-button-content">
+                    <EditPinButton pinId={pin.id}/>
+                </div>
+            </div>
+            }
         </div>
     )
 }

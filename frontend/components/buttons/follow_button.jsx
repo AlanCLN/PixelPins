@@ -9,16 +9,18 @@ const FollowButton = props => {
         return currentUser.followings.includes(otherUser.id)
     })
 
+    if (otherUser.id === currentUser.id) return null;
+
     const handleFollowUser = (e) => {
         e.preventDefault();
-        setFollowed(!followed)
         followUser(otherUser.id)
+        setFollowed(!followed)
     }
 
     const handleUnFollowUser = (e) => {
         e.preventDefault();
-        setFollowed(!followed)
         unfollowUser(otherUser.id)
+        setFollowed(!followed)
     }
 
     const followButton = () => {
