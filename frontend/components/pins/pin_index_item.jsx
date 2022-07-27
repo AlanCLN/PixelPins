@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SavePinButton from '../buttons/save_pin_button';
 import { savePin, unsavePin } from '../../actions/save_pin_actions';
 import EditPinButton from '../buttons/edit_pin_button';
+import PinDropdown from './pin_dropdown/pin_dropdown';
 
 const PinIndexItem = (props) => {
 
-    const { pin, currentUser, savePin, unsavePin } = props
+    const { pin, boards, currentUser, savePin, unsavePin } = props
+
+    const [ showDropdown, setShowDropdown ] = useState(true);
 
     if (!pin) return null;
     if (!currentUser.savedPins) return null;
 
     return (
         <div className="pin-container">
+            {showDropdown &&
+            <PinDropdown 
+                pin={pin}
+                boards={boards}
+                currentUser={currentUser}
+                savePin={savePin}
+                unsavePin={unsavePin}
+            />
+            }
             <Link as="div" to={`/pins/${pin.id}`} className="pin-show-link">
                 <img src={pin.imageUrl} className="pin-image" loading="lazy"/>
                 <div className="hidden-pin-layer">

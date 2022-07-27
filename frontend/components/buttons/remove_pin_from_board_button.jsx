@@ -14,7 +14,7 @@ const RemovePinFromBoardButton = (props) => {
             <button
                 className="unadd-pin-button"
                 onClick={handleUnAddPin}
-            >Remove</button>
+            >Saved</button>
         )
     }
 

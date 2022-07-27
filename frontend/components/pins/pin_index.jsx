@@ -8,6 +8,8 @@ import { openModal } from '../../actions/modal_actions';
 import { fetchUser } from '../../actions/user_actions';
 import ClipLoader from "react-spinners/ClipLoader";
 import sleep from '../../util/sleep';
+import { fetchUserBoards } from '../../actions/board_actions';
+import { filterUserBoards } from '../../reducers/selectors';
 
 const PinIndex = (props) => {
 
@@ -21,10 +23,11 @@ const PinIndex = (props) => {
         }
     }
 
-    const { pins, fetchPins } = props;
+    const { pins, fetchPins, fetchUserBoards, boards, currentUser } = props;
 
     useEffect(() => {
-        fetchPins()
+        fetchPins();
+        fetchUserBoards(currentUser.id);
     }, [])
 
     const handleOpenModal = (formType) => {
@@ -67,6 +70,7 @@ const PinIndex = (props) => {
                     pins.map(pin => {
                         return (
                             <PinIndexItemContainer
+                                boards={boards}
                                 pin={pin}
                                 key={pin.id}
                             />
@@ -88,6 +92,7 @@ const PinIndex = (props) => {
 
 const mSTP = (state) => {
     return {
+        boards: filterUserBoards(state, state.session.id),
         pins: Object.values(state.entities.pins),
         currentUser: state.entities.users[state.session.id]
     }
@@ -96,6 +101,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         fetchPins: () => dispatch(fetchPins()),
+        fetchUserBoards: (userId) => dispatch(fetchUserBoards(userId)),
         openModal: (formType) => dispatch(openModal(formType))
     }
 }

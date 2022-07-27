@@ -14,7 +14,7 @@ const AddPinToBoardButton = (props) => {
             <button
                 className="add-pin-button"
                 onClick={handleAddPin}
-            >Add</button>
+            >Save</button>
         )
     }
 

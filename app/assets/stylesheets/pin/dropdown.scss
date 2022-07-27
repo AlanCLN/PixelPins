@@ -1,0 +1,62 @@
+@import '../variables.scss';
+
+.pin-save-dropdown-container {
+    width: 260px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    top: 80px;
+    left: -20px;
+    z-index: 1200;
+}
+
+.pin-save-dropdown-content {
+    width: 100%;
+    min-height: 80px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-top: 40px;
+}
+
+.pin-save-dropdown-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 18px;
+    height: 50px;
+    width: 290px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.pin-save-type-title {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 7px;
+}
+
+.dropdown-index-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 10px;
+
+    height: 50px;
+    width: 100%;
+}
+
+.dropdown-index-item-content > div {
+    font-size: 18px;
+    font-weight: 550;
+}
