@@ -16,7 +16,7 @@ const boardsReducer = (state = {}, action) => {
             nextState[action.board.id] = action.board
             return nextState;
         case REMOVE_BOARD:
-            delete nextState[action.board.id];
+            delete nextState[action.boardId];
             return nextState;
         default:
             return state;

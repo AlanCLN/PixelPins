@@ -12,7 +12,7 @@ import PinCreateFormContainer from './pins/pin_create_form_container';
 import PinEditFormContainer from './pins/pin_edit_form_container';
 import BoardShowContainer from './boards/board_show';
 import SplashPage from "./splash/splash";
-import BoardModalController from './modal/board_modal_controller';
+import BoardModalController from './boards/board_modal_controller';
 
 const App = () => (
   <div>

@@ -13,6 +13,8 @@
     height: 150px;
     border-radius: 16px;
 
+    position: relative;
+
     background-color: lightgray;
 
     display: flex;
@@ -57,4 +59,47 @@
         font-size: 22px;
         font-weight: 650;
     }
+}
+
+.hidden-board-preview-layer {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+
+.hidden-board-preview-layer:hover {
+    opacity: 1;
+}
+
+.board-preview-edit-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 10;
+    bottom: 8px;
+    right: 5px;
+    background: $gray-button;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+}
+
+.board-preview-edit-button-content {
+    width: 70%;
+    height: 70%;
+}
+
+.board-preview-edit-button-container:hover {
+    background: $gray-button-hover;
 }

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { deletePin, fetchPin, updatePin } from '../../actions/pin_actions';
 import PinEditForm from './pin_edit_form';
 
-const fetchEditForm = (props) => {
+const fetchPinEditForm = (props) => {
 
     useEffect(() => {
         props.fetchPin(props.match.params.pinId)
@@ -63,4 +63,4 @@ const mDTP = (dispatch, ownProps) => {
     }
 }
 
-export default connect(mSTP, mDTP)(fetchEditForm);
+export default connect(mSTP, mDTP)(fetchPinEditForm);

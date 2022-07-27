@@ -1,0 +1,89 @@
+@import '../variables.scss';
+
+.confirm-delete-modal-background {
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1001;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-delete-modal-child {
+    position: absolute;
+    z-index: 1002;
+}
+
+.confirm-delete-modal-container {
+    width: 540px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 10px 24px;
+}
+
+.confirm-delete-title {
+    display: flex;
+    justify-content: center;
+
+    font-weight: 550;
+    font-size: 30px;
+}
+
+.confirm-delete-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100px;
+
+    font-size: 16px;
+}
+
+.confirm-delete-button-container {
+
+    div {
+        height: 40px;
+        width: 100%;    
+        margin: 10px 0;
+
+        font-size: 14px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 24px;
+
+        cursor: pointer;
+    }
+}
+
+.cancel-confirm-delete-button {
+    background-color: $gray-button;
+
+    &:hover {
+        background-color: $gray-button-hover;
+    }
+}
+
+.confirm-delete-board-button {
+    background-color: $red-button;
+    color: white;
+
+    &:hover {
+        background-color: $red-button-hover;
+    }
+}

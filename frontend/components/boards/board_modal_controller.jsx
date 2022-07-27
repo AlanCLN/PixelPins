@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
-import AddPinModalContainer from '../boards/board_show_add_pin_modal';
+import AddPinModalContainer from './board_show_add_pin_modal';
 
-const BoardModalController = ({modal, closeModal}) => {
+const BoardModalController = ({modal, closeModal, board}) => {
 
     if (!modal) {
         return null;
@@ -12,9 +12,6 @@ const BoardModalController = ({modal, closeModal}) => {
     switch (modal) {
         case 'add-pin':
             component = <AddPinModalContainer />;
-            break;
-        case 'edit-board':
-    
             break;
         default:
             return null;

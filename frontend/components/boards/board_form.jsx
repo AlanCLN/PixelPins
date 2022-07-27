@@ -9,7 +9,8 @@ import { closeModal } from '../../actions/modal_actions';
 const BoardForm = (props) => {
 
     const [state, setState] = useState({
-        name: ''
+        name: '',
+        description: ''
     })
     const dispatch = useDispatch();
 
@@ -49,7 +50,7 @@ const BoardForm = (props) => {
                             )
                         })
                     }
-                    <div className="create-board-button-container">
+                    <div className="board-submit-button-container">
                         <button onClick={handleBoardSubmit}>Create</button>
                     </div>
                 </form>

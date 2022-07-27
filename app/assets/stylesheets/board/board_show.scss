@@ -18,11 +18,11 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 20px;
 
     h2 {
-        font-size: 16px;
-        margin-top: -15px;
+        font-size: 22px;
+        margin: 10px 0;
+        font-weight: 550;
     }
 }
 
@@ -31,6 +31,23 @@
     width: 140px;
 
     font-size: 40px;
+}
+
+.board-description-container {
+    margin: 10px 0;
+
+    max-width: 240px;
+
+    p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-wrap: wrap;
+        text-align: center;
+
+        font-size: 14px;
+    }
 }
 
 .board-name-container {
@@ -45,37 +62,34 @@
     }
 }
 
-.edit-board-button {
-    display: block;
+.board-show-edit-board-button {
     width: 36px;
     height: 36px;
 
     position: absolute;
-    left: 110%;
+    left: 105%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     transition: ease-in 0.2s;
 
     img {
-        width: 100%;
-        height: 100%;
+        width: 80%;
+        height: 80%;
         cursor: pointer;
     }
 }
 
-.edit-board-button:hover {
-    margin-top: 4px;
-    margin-right: 4px;
-    width: 30px;
-    height: 30px;
+.board-show-edit-board-button:hover {
+    transform: scale(1.1);
 }
 
 .add-pin-to-board-button {
     height: 40px;
     width: 120px;
 
+    margin: 10px 0;
 
     button {
         height: 100%;

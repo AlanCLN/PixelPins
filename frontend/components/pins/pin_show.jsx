@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import DeletePinButton from '../buttons/delete_pin_button';
 import EditPinButton from '../buttons/edit_pin_button';
 import SavePinButton from '../buttons/save_pin_button';
 import { connect, useDispatch } from "react-redux";

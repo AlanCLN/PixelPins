@@ -12,6 +12,7 @@ import { receiveBoard } from '../../actions/board_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchUserSavedPins } from '../../actions/save_pin_actions';
 import BoardShowPinContainer from '../pins/board_show_pin';
+import BoardEditModalContainer from './board_show_edit_modal';
 
 const BoardShow = (props) => {
 
@@ -19,6 +20,7 @@ const BoardShow = (props) => {
     const dispatch = useDispatch();
 
     const [user, setUser] = useState('');
+    const [showEdit, setShowEdit ] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -41,9 +43,16 @@ const BoardShow = (props) => {
         openModal('add-pin')
     }
 
-    const handleEditBoard = (e) => {
+    const handleShowEditModal = (e) => {
         e.preventDefault();
-        openModal('edit-board')
+        e.stopPropagation();
+        setShowEdit(true);
+    }
+
+    const handleCloseEditModal = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowEdit(false);
     }
 
     const breakpoints = {
@@ -59,47 +68,60 @@ const BoardShow = (props) => {
     if (!board || !pins || !user) return null
 
     return (
-        <div className="board-show-content">
-            <div className="board-show-container">
-                <div className="board-show-info">
-                    <div className="board-name-container">
-                        <h1>{board.name}</h1>
-                        <span className="edit-board-button" onClick={handleEditBoard}>
-                            <img src={window.editButton} alt="" />
-                        </span>
-                    </div>
-                    <div className="board-show-avatar-container">
-                        <Avatar user={user} />
-                    </div>
-                    <h2>{user.username}</h2>
-                    {board.userId === currentUserId &&
-                        <div className="add-pin-to-board-button">
-                            <button onClick={handleAddPin}>Add Pins</button>
-                        </div>
-                    }
-                </div>
-                <div className="board-show-pins">
-                    <Masonry
-                    breakpointCols={breakpoints}
-                    className="my-masonry-grid"
-                    columnClassName="user-show-my-masonry-grid_column"
-                    >
-                    {
-                        pins.map((pin, idx) => {
-                            return (
-                                <BoardShowPinContainer
-                                    key={idx}
-                                    pin={pin}
-                                    board={board}
-                                />
-                            )
-                        }) 
-                    }
-                    </Masonry>
+        <>
+            {showEdit &&
+            <div className="board-modal-background" onClick={handleCloseEditModal}>
+                <div className="board-modal-child" onClick={e => e.stopPropagation()}>
+                    <BoardEditModalContainer board={board}/> 
                 </div>
             </div>
-
-        </div>
+            }
+            <div className="board-show-content">
+                <div className="board-show-container">
+                    <div className="board-show-info">
+                        <div className="board-name-container">
+                            <h1>{board.name}</h1>
+                            <div className="board-show-edit-board-button" onClick={handleShowEditModal}>
+                                <img src={window.editButton} alt="" />
+                            </div>
+                        </div>
+                        <div className="board-show-avatar-container">
+                            <Avatar user={user} />
+                        </div>
+                        <h2>{user.username}</h2>
+                        {board.description &&
+                        <div className="board-description-container">
+                            <p>{board.description}</p>
+                        </div>
+                        }
+                        {board.userId === currentUserId &&
+                            <div className="add-pin-to-board-button">
+                                <button onClick={handleAddPin}>Add Pins</button>
+                            </div>
+                        }
+                    </div>
+                    <div className="board-show-pins">
+                        <Masonry
+                        breakpointCols={breakpoints}
+                        className="my-masonry-grid"
+                        columnClassName="user-show-my-masonry-grid_column"
+                        >
+                        {
+                            pins.map((pin, idx) => {
+                                return (
+                                    <BoardShowPinContainer
+                                        key={idx}
+                                        pin={pin}
+                                        board={board}
+                                    />
+                                )
+                            }) 
+                        }
+                        </Masonry>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 

@@ -1,4 +1,4 @@
-json.extract! @board, :id, :name, :user_id
+json.extract! @board, :id, :name, :description, :user_id
 
 pins_array = []
 @board.pins.each do |pin|

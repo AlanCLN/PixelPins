@@ -10,6 +10,7 @@ import BoardPreview from '../boards/board_preview';
 import FollowButtonContainer from '../buttons/follow_button';
 import FollowModalControllerContainer from '../follows/follow_modal_controller';
 import { fetchUserFollowers, fetchUserFollowings } from '../../actions/follow_actions';
+import BoardModalController from '../boards/board_modal_controller';
 
 const UserShow = (props) => {
 
@@ -61,14 +62,14 @@ const UserShow = (props) => {
                     >{user.followers.length} followers</span>
                 </div>
                 <FollowModalControllerContainer userId={user.id}/>
+                { currentUser.id !== user.id &&
                 <div className="user-show-follow-button-container">
-                    { currentUser.id !== user.id &&
                     <FollowButtonContainer
                         otherUser={user}
                         currentUser={currentUser}
                     />
-                    }
                 </div>
+                }
             </div>
             <div className="board-index-content">
                 {
@@ -78,6 +79,8 @@ const UserShow = (props) => {
                                 openModal={props.openModal}
                                 board={board}
                                 key={idx}
+                                currentUser={currentUser}
+                                user={user}
                             />
                         )
                     })

@@ -1,5 +1,26 @@
 @import '../variables.scss';
 
+.board-modal-background {
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-modal-child {
+    position: absolute;
+}
+
 .board-modal-container {
     width: 540px;
     background-color: rgb(255, 255, 255);
@@ -63,11 +84,26 @@
     }
 }
 
-.create-board-button-container {
+.board-submit-button-container {
     width: 100%;
 
     display: flex;
     justify-content: flex-end;
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 15px;
+        color: $pinterest-red;
+
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
 
     button {
@@ -88,4 +124,11 @@
     button:hover {
         background-color: $red-button-hover;
     }
+}
+
+.board-submit-button-content {
+    display: flex;
+    justify-content: space-between;
+
+    width: 130px;
 }

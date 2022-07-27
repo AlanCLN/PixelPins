@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { receiveFilteredPins } from '../../actions/pin_actions';
 import { fetchPinsOnBoard } from '../../util/pin_board_api_util';
+import EditBoardButton from '../buttons/edit_board_button';
+import BoardEditModalContainer from './user_show_board_edit_modal';
 
 const BoardPreview = (props) => {
     
-    const { board, openModal } = props;
+    const { board, currentUser, user } = props;
 
     if (!board) return null;
 
@@ -16,6 +18,8 @@ const BoardPreview = (props) => {
         return []
     })
 
+    const [showEdit, setShowEdit ] = useState(false);
+
     useEffect(() => {
         fetchPins();
     }, [])
@@ -24,6 +28,18 @@ const BoardPreview = (props) => {
         let pins = await fetchPinsOnBoard(board.id)
         setPins(Object.values(pins))
         dispatch(receiveFilteredPins(pins))
+    }
+
+    const handleShowEditModal = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowEdit(true);
+    }
+
+    const handleCloseEditModal = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowEdit(false);
     }
 
     const setImage1 = () => {
@@ -51,23 +67,41 @@ const BoardPreview = (props) => {
     }
 
     return (
-        <Link className="board-show-link" to={`/boards/${board.id}`}>
-            <div className="board-index-item-container">
-                <div className="board-image-preview">
-                    <img src={setImage1()} />
-                </div>
-                <div className="board-image-preview">
-                    <img src={setImage2()} />
-                </div>
-                <div className="board-image-preview">
-                    <img src={setImage3()} />
+        <>  
+            {showEdit &&
+            <div className="board-modal-background" onClick={handleCloseEditModal}>
+                <div className="board-modal-child" onClick={e => e.stopPropagation()}>
+                    <BoardEditModalContainer board={board}/> 
                 </div>
             </div>
-            <div className="board-preview-info-container">
-                <p className="board-preview-name">{board.name}</p>
-                <p className="board-preview-num-pins">{pins.length} Pins</p>
-            </div>
-        </Link>
+            }
+            <Link className="board-show-link" to={`/boards/${board.id}`}>
+                <div className="board-index-item-container">
+                    <div className="board-image-preview">
+                        <img src={setImage1()} />
+                    </div>
+                    <div className="board-image-preview">
+                        <img src={setImage2()} />
+                    </div>
+                    <div className="board-image-preview">
+                        <img src={setImage3()} />
+                    </div>
+                    <div className="hidden-board-preview-layer">
+                        {currentUser.id === user.id &&
+                        <div className="board-preview-edit-button-container" onClick={handleShowEditModal}>
+                            <div className="board-preview-edit-button-content">
+                                <EditBoardButton />
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div className="board-preview-info-container">
+                    <p className="board-preview-name">{board.name}</p>
+                    <p className="board-preview-num-pins">{pins.length} Pins</p>
+                </div>
+            </Link>
+        </>
     )
 }
 
