@@ -8,6 +8,7 @@ const DeletePinButton = (props) => {
         e.preventDefault();
         deletePin(pinId)
         .then(finishDelete());
+        window.location.reload();
     }
 
     return (

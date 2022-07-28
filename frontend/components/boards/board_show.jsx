@@ -81,9 +81,11 @@ const BoardShow = (props) => {
                     <div className="board-show-info">
                         <div className="board-name-container">
                             <h1>{board.name}</h1>
+                            {currentUserId === board.userId &&
                             <div className="board-show-edit-board-button" onClick={handleShowEditModal}>
                                 <img src={window.editButton} alt="" />
                             </div>
+                            }
                         </div>
                         <div className="board-show-avatar-container">
                             <Avatar user={user} />
