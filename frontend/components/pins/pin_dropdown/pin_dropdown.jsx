@@ -6,6 +6,8 @@ const PinDropdown = props => {
 
     const { pin, boards, currentUser, savePin, unsavePin } = props
 
+    if (!pin || !boards) return null;
+
     return (
         <div className="pin-save-dropdown-container">
             <div className="pin-save-dropdown-content">
@@ -26,11 +28,12 @@ const PinDropdown = props => {
                         Save to board
                     </div>
                     {
-                        boards.map(board => {
+                        boards.map((board, idx) => {
                             return (
-                                <PinSaveToBoard 
+                                <PinSaveToBoard
                                     board={board}
-                                    key={board.id}
+                                    pin={pin}
+                                    key={idx}
                                 />
                             )
                         })

@@ -4,16 +4,20 @@ import { fetchUserSavedPins } from '../../actions/save_pin_actions';
 import { filterUserSavedPins } from '../../reducers/selectors';
 import Masonry from 'react-masonry-css';
 import PinIndexItem from '../pins/pin_index_item';
+import { filterUserBoards } from '../../reducers/selectors';
+import { fetchUserBoards } from '../../actions/board_actions';
+import BoardPreview from '../boards/board_preview';
 
 const UserShowSaved = (props) => {
 
     const userParamsId = props.match.params.userId
     
     useEffect(() => {
-        props.fetchUserSavedPins(userParamsId)
+        props.fetchUserSavedPins(userParamsId);
+        props.fetchUserBoards();
     }, [userParamsId, props.userSavedPinsArray])
 
-    const { user, pins } = props
+    const { user, pins, boards, currentUser } = props
 
     const breakpoints = {
         default: 7,
@@ -25,10 +29,28 @@ const UserShowSaved = (props) => {
         500: 1
     }
 
-    if (!user || !pins) return null
+    if (!user || !pins || !boards) return null
 
     return (
-        <div className="created-content">
+        <div className="saved-content">
+            <div className="board-index-content">
+                {
+                    boards.map((board, idx) => {
+                        return (
+                            <BoardPreview
+                                openModal={props.openModal}
+                                board={board}
+                                key={idx}
+                                currentUser={currentUser}
+                                user={user}
+                            />
+                        )
+                    })
+                }
+            </div>
+            <div className="unorganized-ideas-title">
+                Unorganized ideas
+            </div>
             <Masonry
                 breakpointCols={breakpoints}
                 className="my-masonry-grid"
@@ -38,6 +60,7 @@ const UserShowSaved = (props) => {
                     pins.map((pin, idx) => {
                         return (
                             <PinIndexItem
+                                boards={boards}
                                 key={idx}
                                 pin={pin}
                             />
@@ -53,13 +76,17 @@ const mSTP = (state, ownProps) => {
     const userId = ownProps.match.params.userId
     return {
         user: state.entities.users[userId],
+        currentUser: state.entities.users[state.session.id],
         pins: filterUserSavedPins(state, userId),
+        boards: filterUserBoards(state, userId),
         userSavedPinsArray: state.entities.users[userId]?.savedPins
     }
 }
 
 const mDTP = (dispatch, ownProps) => {
+    const userId = ownProps.match.params.userId
     return {
+        fetchUserBoards: () => dispatch(fetchUserBoards(userId)),
         fetchUserSavedPins: (userId) => dispatch(fetchUserSavedPins(userId)),
         fetchUser: (userId) => dispatch(fetchUser(userId))
     }

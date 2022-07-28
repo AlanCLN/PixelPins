@@ -3,7 +3,8 @@ import PinIndexItem from '../pins/pin_index_item';
 import { connect } from "react-redux";
 import { fetchUserPins } from "../../actions/pin_actions";
 import { fetchUser } from "../../actions/user_actions";
-import { filterUserPins } from '../../reducers/selectors';
+import { filterUserPins, filterUserBoards } from '../../reducers/selectors';
+import { fetchUserBoards } from '../../actions/board_actions';
 import Masonry from 'react-masonry-css';
 import ClipLoader from "react-spinners/ClipLoader";
 import sleep from '../../util/sleep';
@@ -24,9 +25,10 @@ const UserShowCreated = (props) => {
 
     useEffect(() => {
         props.fetchUserPins();
+        props.fetchUserBoards();
     }, [userParamsId])
 
-    const { user, pins } = props
+    const { user, pins, boards } = props
 
     const breakpoints = {
         default: 7,
@@ -38,7 +40,7 @@ const UserShowCreated = (props) => {
         500: 1
     }
 
-    if (!user || !pins) return null
+    if (!user || !pins || !boards) return null
 
     return (
         <div className="created-content">
@@ -63,6 +65,7 @@ const UserShowCreated = (props) => {
                     pins.map((pin, idx) => {
                         return (
                             <PinIndexItem
+                                boards={boards}
                                 key={idx}
                                 pin={pin}
                             />
@@ -78,7 +81,8 @@ const mSTP = (state, ownProps) => {
     const userId = ownProps.match.params.userId
     return {
         user: state.entities.users[userId],
-        pins: filterUserPins(state, userId)
+        pins: filterUserPins(state, userId),
+        boards: filterUserBoards(state, userId),
     }
 }
 
@@ -86,6 +90,7 @@ const mDTP = (dispatch, ownProps) => {
     const userId = ownProps.match.params.userId
     return {
         fetchUserPins: () => dispatch(fetchUserPins(userId)),
+        fetchUserBoards: () => dispatch(fetchUserBoards(userId)),
         fetchUser: (userId) => dispatch(fetchUser(userId))
     }
 }

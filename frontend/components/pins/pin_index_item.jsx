@@ -10,9 +10,9 @@ const PinIndexItem = (props) => {
 
     const { pin, boards, currentUser, savePin, unsavePin } = props
 
-    const [ showDropdown, setShowDropdown ] = useState(true);
+    const [ showDropdown, setShowDropdown ] = useState(false);
 
-    if (!pin) return null;
+    if (!pin || !boards) return null;
     if (!currentUser.savedPins) return null;
 
     return (
@@ -30,6 +30,9 @@ const PinIndexItem = (props) => {
                 <img src={pin.imageUrl} className="pin-image" loading="lazy"/>
                 <div className="hidden-pin-layer">
                     <div className="hidden-save-pin">
+                        <div className="profile-dropdown-button-container">
+                            <span>Profile</span>
+                        </div>
                         <SavePinButton
                             currentUser={currentUser}
                             unsavePin={unsavePin}

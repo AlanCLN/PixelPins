@@ -71,21 +71,6 @@ const UserShow = (props) => {
                 </div>
                 }
             </div>
-            <div className="board-index-content">
-                {
-                    boards.map((board, idx) => {
-                        return (
-                            <BoardPreview
-                                openModal={props.openModal}
-                                board={board}
-                                key={idx}
-                                currentUser={currentUser}
-                                user={user}
-                            />
-                        )
-                    })
-                }
-            </div>
             <div className="created-saved-container">
                 <div className="show-tab">
                     <NavLink
@@ -129,7 +114,6 @@ const mDTP = (dispatch, ownProps) => {
         openModal: (formType) => dispatch(openModal(formType)),
         fetchUserFollowers: () => dispatch(fetchUserFollowers(userId)),
         fetchUserFollowings: () => dispatch(fetchUserFollowings(userId))
-
     }
 }
 

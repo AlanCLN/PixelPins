@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { fetchPinsOnBoard } from '../../actions/pin_board_actions';
-import { filterBoardPins } from '../../reducers/selectors';
+import { filterBoardPins, filterUserBoards } from '../../reducers/selectors';
 import Masonry from 'react-masonry-css';
 import PinIndexItem from '../pins/pin_index_item';
 import Avatar from '../user/avatar';
 import { fetchUser } from '../../util/user_api_util';
 import { receiveUser } from '../../actions/user_actions';
 import { fetchBoard } from '../../util/board_api_util';
-import { receiveBoard } from '../../actions/board_actions';
+import { receiveBoard, fetchUserBoards } from '../../actions/board_actions';
 import { openModal } from '../../actions/modal_actions';
 import { fetchUserSavedPins } from '../../actions/save_pin_actions';
-import BoardShowPinContainer from '../pins/board_show_pin';
 import BoardEditModalContainer from './board_show_edit_modal';
 
 const BoardShow = (props) => {
@@ -26,7 +25,7 @@ const BoardShow = (props) => {
         fetchData();
     }, [boardParamsId])
 
-    const { board, pins, currentUserId, openModal } = props
+    const { board, boards, pins, currentUserId, openModal } = props
 
     const fetchData = async () => {
         let board = await fetchBoard(boardParamsId);
@@ -36,6 +35,7 @@ const BoardShow = (props) => {
         setUser(user)
         props.fetchUserSavedPins(user.id);
         props.fetchPinsOnBoard(boardParamsId);
+        props.fetchUserBoards(currentUserId);
     }
 
     const handleAddPin = (e) => {
@@ -109,10 +109,10 @@ const BoardShow = (props) => {
                         {
                             pins.map((pin, idx) => {
                                 return (
-                                    <BoardShowPinContainer
+                                    <PinIndexItem
                                         key={idx}
                                         pin={pin}
-                                        board={board}
+                                        boards={boards}
                                     />
                                 )
                             }) 
@@ -129,6 +129,7 @@ const mSTP = (state , ownProps) => {
     const boardId = ownProps.match.params.boardId
     return {
         board: state.entities.boards[boardId],
+        boards: filterUserBoards(state, state.session.id),
         pins: filterBoardPins(state, boardId),
         boardPinsArray: state.entities.boards[boardId]?.pins,
         currentUserId: state.session.id
@@ -139,6 +140,7 @@ const mDTP = (dispatch) => {
     return {
         fetchBoard: (boardId) => dispatch(fetchBoard(boardId)),
         fetchPinsOnBoard: (boardId) => dispatch(fetchPinsOnBoard(boardId)),
+        fetchUserBoards: (userId) => dispatch(fetchUserBoards(userId)),
         fetchUserSavedPins: (userId) => dispatch(fetchUserSavedPins(userId)),
         openModal: (formType) => dispatch(openModal(formType))
     }
