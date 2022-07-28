@@ -15,10 +15,29 @@ const PinIndexItem = (props) => {
     if (!pin || !boards) return null;
     if (!currentUser.savedPins) return null;
 
+    const handleOpenDropdown = e => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        setShowDropdown(!showDropdown);
+    }
+
+    const handleStopPropagation = e => {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    document.addEventListener('click', () => {
+        if (showDropdown) {
+            setShowDropdown(false)
+        }
+    })
+
     return (
         <div className="pin-container">
             {showDropdown &&
-            <PinDropdown 
+            <PinDropdown
+                stopPropagation={handleStopPropagation}
                 pin={pin}
                 boards={boards}
                 currentUser={currentUser}
@@ -29,10 +48,13 @@ const PinIndexItem = (props) => {
             <Link as="div" to={`/pins/${pin.id}`} className="pin-show-link">
                 <img src={pin.imageUrl} className="pin-image" loading="lazy"/>
                 <div className="hidden-pin-layer">
-                    <div className="hidden-save-pin">
-                        <div className="profile-dropdown-button-container">
-                            <span>Profile</span>
+                    <div className="profile-dropdown-button-container" onClick={handleOpenDropdown}>
+                        <span>Profile</span>
+                        <div className="dropdown-icon-container">
+                            <img src={window.dropdownIcon} />
                         </div>
+                    </div>
+                    <div className="hidden-save-pin">
                         <SavePinButton
                             currentUser={currentUser}
                             unsavePin={unsavePin}

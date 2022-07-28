@@ -9,7 +9,7 @@ const PinDropdown = props => {
     if (!pin || !boards) return null;
 
     return (
-        <div className="pin-save-dropdown-container">
+        <div className="pin-save-dropdown-container" onClick={props.stopPropagation}>
             <div className="pin-save-dropdown-content">
                 <div className="pin-save-dropdown-title">
                     Save

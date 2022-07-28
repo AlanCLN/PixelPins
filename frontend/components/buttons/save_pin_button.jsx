@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SavePinButton = (props) => {
 
@@ -8,6 +7,10 @@ const SavePinButton = (props) => {
     const [saved, setSaved] = useState(() => {
         return currentUser.savedPins.includes(pin.id)
     })
+
+    useEffect(() => {
+        setSaved(currentUser.savedPins.includes(pin.id))
+    }, [currentUser.savedPins])
 
     const handleSavePin = (e) => {
         e.preventDefault();

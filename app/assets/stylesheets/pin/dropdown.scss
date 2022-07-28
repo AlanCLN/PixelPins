@@ -10,7 +10,7 @@
     align-items: center;
     padding: 10px;
     position: absolute;
-    top: 80px;
+    top: 60px;
     left: -20px;
     z-index: 1200;
 }
@@ -59,4 +59,33 @@
 .dropdown-index-item-content > div {
     font-size: 18px;
     font-weight: 550;
+}
+
+.profile-dropdown-button-container {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+
+    width: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    span {
+        font-size: 16px;
+        color: white;
+    }
+}
+
+.dropdown-icon-container {
+    width: 16px;
+    height: 16px;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
 }
