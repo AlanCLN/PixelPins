@@ -16,6 +16,12 @@ Pixel Pins is a [Pinterest](https://www.pinterest.com/) clone that allows a logg
 - AWS S3
 - Heroku
 
+## Previews
+
+#### This is the splash page
+
+![](./app/assets/images/splash-page-gif.gif)
+
 ## Code Snippets
 
 Below is a code snippet of when we want to save a pin to our profile. We are simply creating an entry in a relational database with the user ID and the pin ID. When we want to un-save that pin, we simply destroy that entry in our database.

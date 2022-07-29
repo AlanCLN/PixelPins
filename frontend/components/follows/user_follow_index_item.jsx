@@ -19,12 +19,14 @@ const UserFollowIndexItem = props => {
                     </div>
                 </div>
             </Link>
+            {user.id !== currentUser &&
             <div className="followee-button-container">
                 <FollowButtonContainer 
                     currentUser={currentUser}
                     otherUser={user}
                 />
             </div>
+            }
         </div>
     )
 }

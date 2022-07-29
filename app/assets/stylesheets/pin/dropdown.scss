@@ -89,3 +89,18 @@
         width: 100%;
     }
 }
+
+.pin-show-profile-dropdown-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    min-width: 73px;
+    margin-right: 10px;
+
+    cursor: pointer;
+
+    span {
+        font-size: 16px;
+    }
+}
