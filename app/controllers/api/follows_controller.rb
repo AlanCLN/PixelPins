@@ -21,7 +21,6 @@ class Api::FollowsController < ApplicationController
         @current_user = current_user
         @followee = User.find_by(id: params[:followee_id])
         ids = [@current_user.id, @followee.id]
-
         @users = User.find(ids)
 
         if @followee && @current_user.follow(@followee)
@@ -35,7 +34,6 @@ class Api::FollowsController < ApplicationController
         @current_user ||= current_user
         @followee ||= User.find_by(id: params[:followee_id])
         ids = [@current_user.id, @followee.id]
-
         @users = User.find(ids)
 
         if @followee && @current_user.unfollow(@followee)

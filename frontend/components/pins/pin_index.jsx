@@ -19,6 +19,7 @@ const PinIndex = (props) => {
     const pinLoaded = async () => {
         counter.current += 1;
         if (counter.current >= pins.length) {
+            await sleep(800)
             setLoading(false);
         }
     }
