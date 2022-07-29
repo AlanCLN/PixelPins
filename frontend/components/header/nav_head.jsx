@@ -37,13 +37,13 @@ const NavHead = (props) => {
                 <div className="unauth-nav-links">
                     <div className="bio-links">
                         <div className="link-container">
-                            <a href="https://github.com/alancln">Github</a>
+                            <a href="#" target="_blank">Portfolio</a>
                         </div>
                         <div className="link-container">
-                            <a href="https://www.linkedin.com/in/alan-cln/">LinkedIn</a>
+                            <a href="https://github.com/alancln" target="_blank">Github</a>
                         </div>
                         <div className="link-container">
-                            <a href="#">Portfolio</a>
+                            <a href="https://www.linkedin.com/in/alan-cln/" target="_blank">LinkedIn</a>
                         </div>
                     </div>
                     <button className="session-modal-button header-login" onClick={openModal('login')}>
@@ -78,17 +78,17 @@ const NavHead = (props) => {
                 </div>
                 <div className="auth-nav-links">
                     <div className="portfolio link-container icon-container">
-                        <a href="#">
+                        <a href="#" target="_blank">
                             <img src={window.portfolioIcon} />
                         </a>
                     </div>
                     <div className="github link-container icon-container">
-                        <a href="https://github.com/alancln">
+                        <a href="https://github.com/alancln" target="_blank">
                             <img src={window.githubIcon} />
                         </a>
                     </div>
                     <div className="linkedin link-container icon-container">
-                        <a href="https://www.linkedin.com/in/alan-cln/">
+                        <a href="https://www.linkedin.com/in/alan-cln/" target="_blank">
                             <img src={window.linkedinIcon} />
                         </a>
                     </div>
