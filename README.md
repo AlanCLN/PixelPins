@@ -18,9 +18,21 @@ Pixel Pins is a [Pinterest](https://www.pinterest.com/) clone that allows a logg
 
 ## Previews
 
-#### This is the splash page
+### Splash Page
 
 ![](./app/assets/images/splash-page-gif.gif)
+
+### Home Page
+
+![](./app/assets/images/home-page-gif.gif)
+
+### Create a Pin
+
+![](./app/assets/images/create-pin-gif.gif)
+
+### Organize Your Pins
+
+![](./app/assets/images/create-board-gif.gif)
 
 ## Code Snippets
 
