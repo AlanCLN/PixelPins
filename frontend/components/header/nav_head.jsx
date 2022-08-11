@@ -37,7 +37,7 @@ const NavHead = (props) => {
                 <div className="unauth-nav-links">
                     <div className="bio-links">
                         <div className="link-container">
-                            <a href="#" target="_blank">Portfolio</a>
+                            <a href="https://alancln.dev/" target="_blank">Portfolio</a>
                         </div>
                         <div className="link-container">
                             <a href="https://github.com/alancln" target="_blank">Github</a>
@@ -78,7 +78,7 @@ const NavHead = (props) => {
                 </div>
                 <div className="auth-nav-links">
                     <div className="portfolio link-container icon-container">
-                        <a href="#" target="_blank">
+                        <a href="https://alancln.dev/" target="_blank">
                             <img src={window.portfolioIcon} />
                         </a>
                     </div>
