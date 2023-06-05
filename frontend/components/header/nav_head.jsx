@@ -43,7 +43,7 @@ const NavHead = (props) => {
                             <a href="https://github.com/alancln" target="_blank">Github</a>
                         </div>
                         <div className="link-container">
-                            <a href="https://www.linkedin.com/in/alan-cln/" target="_blank">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/alancln/" target="_blank">LinkedIn</a>
                         </div>
                     </div>
                     <button className="session-modal-button header-login" onClick={openModal('login')}>
@@ -88,7 +88,7 @@ const NavHead = (props) => {
                         </a>
                     </div>
                     <div className="linkedin link-container icon-container">
-                        <a href="https://www.linkedin.com/in/alan-cln/" target="_blank">
+                        <a href="https://www.linkedin.com/in/alancln/" target="_blank">
                             <img src={window.linkedinIcon} />
                         </a>
                     </div>

@@ -2,9 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from './store/store';
 import Root from './components/root';
-import { logout } from './actions/session_actions';
-import { openModal, closeModal } from './actions/modal_actions';
-import { fetchUser } from './actions/user_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
